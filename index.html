@@ -38,21 +38,21 @@
                     </ul>
                 </div> <!-- final_midia_soc ial -->
                 <p class="descricao descricao-second">ou use seu email para se registrar</p>
-                <form class="form">
+                <form class="form" id="registrationForm">
 
                     <label class="label-input" for="">
                         <i class="fa-regular fa-user icon-modify"></i>
-                        <input type="text" placeholder="Nome">
+                        <input type="text" placeholder="nome" id="nome">
                     </label>
 
                     <label class="label-input" for="">
                         <i class="fa-regular fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="Email">
+                        <input type="email" placeholder="email" id="email">
                     </label>
 
                     <label class="label-input" for="">
                         <i class="fa-solid fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Senha">
+                        <input type="password" placeholder="senha" id="senha">
                     </label>
 
 
@@ -90,26 +90,29 @@
                     </ul>
                 </div> <!-- final_midia_social -->
                 <p class="descricao descricao-second">use seu email e senha para entrar</p>
-                <form class="form">
+                <form class="form" id="loginForm">
 
 
                     <label class="label-input" for="">
                         <i class="fa-regular fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="Email">
+                        <input type="email" placeholder="Email" id="email-login">
                     </label>
 
                     <label class="label-input" for="">
                         <i class="fa-solid fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Senha">
+                        <input type="password" placeholder="Senha" id="senha-login">
                     </label>
 
 
                     <a class="senha" href="#">Esqueceu a senha?</a>
-                    <button class="btn btn-second">entrar</button>
+                    <button class="btn btn-second" type="submit">entrar</button>
                 </form><!-- final_form -->
             </div><!-- final_segunda_coluna -->         
         </div><!-- final_segundo_conteudo -->
     </div><!-- final_conteiner -->
     <script src="js/app.js"></script>
+    <script src="js/register.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>
+
