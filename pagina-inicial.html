@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script src="https://kit.fontawesome.com/fc5a8c4aa2.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlfaEduca</title>
+    <link rel="stylesheet" href="css/style-da-pagina-inicial.css">
+</head>
+<body>
+    <div class="user-photo" onclick="toggleUserMenu()"></div>
+    <div id="user-menu" class="user-menu hidden">
+        <button>Perfil</button>
+        <button>Relatórios</button>
+        <button class="logout">Sair da conta</button>
+    </div>
+    <div class="sidebar">
+        <div>
+            <div class="logo">
+                <h2>AlfaEduca</h2>
+            </div>
+            <button>
+                <i class="fa-solid fa-house"></i> Início
+            </button>
+            <button>
+                <i class="fa-solid fa-tasks"></i> Atividade
+            </button>
+            <button>
+                <i class="fa-solid fa-camera"></i> Câmera
+            </button>
+        </div>
+        <div class="footer">
+            &copy; AlfaEduca Ltda
+        </div>
+    </div>
+    <div class="welcome-message">
+        Bem vindo, Usuário!
+        <div class="subtitle">
+            O que vamos aprender hoje com o AlfaEduca?
+        </div>
+    </div>
+    <div class="progress-title">
+        <h4>Onde você parou:</h4>
+    </div>
+    <div class="container">
+        <h6>Vazio</h6>
+    </div>
+    <div id="user-info">
+        <p id="user-name"></p>
+        <p id="user-email"></p>
+    </div>
+    <script src="js/user-menu.js"></script>
+</body>
+</html>
