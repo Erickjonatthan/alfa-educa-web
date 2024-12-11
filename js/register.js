@@ -12,7 +12,7 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
     };
 
     try {
-        const response = await fetch('http://https://alfa-educa-server.onrender.com/cadastro', {
+        const response = await fetch('https://alfa-educa-server.onrender.com/cadastro', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
