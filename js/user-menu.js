@@ -21,7 +21,7 @@ async function fetchUserData() {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/cadastro/${accountId}`, {
+        const response = await fetch(`http://https://alfa-educa-server.onrender.com/cadastro/${accountId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
