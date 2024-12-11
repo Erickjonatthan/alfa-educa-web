@@ -2,9 +2,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     event.preventDefault();
 
     const login = document.getElementById('email-login').value;
-    console.log(login);
     const senha = document.getElementById('senha-login').value;
-    console.log(senha);
 
     const userData = {
         login: login,
@@ -25,8 +23,12 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         }
 
         const result = await response.json();
-        document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+        
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('contaId', result.contaId);
+
+        window.location.href = 'pagina-inicial.html';
     } catch (error) {
-        document.getElementById('result').textContent = 'Erro ao logar usuário: ' + error.message;
+        console.log('Erro ao logar usuário: ' + error.message);
     }
 });

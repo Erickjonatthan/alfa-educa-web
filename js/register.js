@@ -25,8 +25,10 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
         }
 
         const result = await response.json();
-        document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+
+        // Exibir mensagem de sucesso
+    alert('Usuário cadastrado com sucesso!');
     } catch (error) {
-        document.getElementById('result').textContent = 'Erro ao cadastrar usuário: ' + error.message;
+        console.log('Erro ao cadastrar usuário: ' + error.message);
     }
 });
