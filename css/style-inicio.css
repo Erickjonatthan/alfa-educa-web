@@ -1,0 +1,133 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 80px; /* Adicione padding para evitar que o conteúdo fique atrás do cabeçalho fixo */
+    margin: 0; /* Remove margens padrão */
+}
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white; /* Adicione um fundo para o cabeçalho */
+    z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+    padding: 10px 0; /* Adicione padding para espaçamento interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra nas bordas */
+    display: flex;
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    align-items: center; /* Alinha os itens verticalmente */
+}
+
+.start-button {
+    background-color: rgb(150, 13, 132);
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin-right: 80px;
+    margin-top: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra nas bordas */
+}
+
+header h1 {
+    font-size: 36px;
+    color: rgb(150, 13, 132);
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 130px;
+}
+
+.centered-text {
+    position: absolute;
+    top: 40%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    width: 80%; /* Ajuste a largura conforme necessário */
+    text-align: center;
+}
+
+.button-container {
+    position: absolute;
+    top: 60%;
+    left: 75%; /* Ajuste de 50% para 60% */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-container .comece-agora{
+    display: block;
+    width: 250px;
+    margin: 10px 0;
+    margin-top: 30px;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: rgb(150, 13, 132);
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra nas bordas */
+}
+
+.button-container .login{
+    display: block;
+    width: 250px;
+    margin: 10px 0;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    color: rgb(100, 13, 132);
+    background-color: rgb(255, 255, 255);
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra nas bordas */
+}
+
+.button-container .login-button {
+    background-color: rgb(100, 13, 132);
+}
+
+.button-container .start-button:hover,
+.button-container .login-button:hover {
+    background-color: rgb(120, 13, 132);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+}
+
+.study-image {
+    width: 1400px;
+    height: auto;
+    margin-left: 80px;
+    margin-top: 100px;
+}
+
+.content-background {
+    background-color: #9e44c2; /* Cor de fundo desejada */
+    padding: 20px; /* Espaçamento interno */
+}
