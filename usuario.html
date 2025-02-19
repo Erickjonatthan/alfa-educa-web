@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script src="https://kit.fontawesome.com/fc5a8c4aa2.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlfaEduca - Atividade</title>
+    <link rel="stylesheet" href="css/style-do-usuario.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="logo">
+                <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\logo-alfa-educa.jpg" alt="logo" class="study-image">
+            </div>
+            <button onclick="window.location.href='pagina-inicial.html'">
+                <i class="fa-solid fa-house"></i> Início
+            </button>
+            <button onclick="window.location.href='atividade.html'">
+                <i class="fa-solid fa-tasks"></i> Atividade
+            </button>
+        </div>
+        <div class="footer">
+            &copy; AlfaEduca Ltda
+        </div>
+    </div>
+    <div class="content">
+        <div class="profile-icon">
+            <img id="profile-pic" src="" alt="User Photo">
+        </div>
+        <div class="user-info">
+            <p id="user-name"></p>
+            <p id="user-email"></p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (userData && userData.imgPerfil) {
+                document.getElementById('profile-pic').src = userData.imgPerfil;
+            }
+            document.getElementById('user-name').textContent = userData ? userData.nome : 'Nome do Usuário';
+            document.getElementById('user-email').textContent = userData ? userData.email : 'email@exemplo.com';
+        });
+    </script>
+    <script src="js/user-menu.js"></script>
+</body>
+</html>
