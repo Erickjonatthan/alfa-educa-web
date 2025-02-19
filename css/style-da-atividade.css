@@ -1,4 +1,4 @@
- body {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color:rgb(78, 29, 84);
+    background-color: rgb(78, 29, 84);
     color: white;
     display: flex;
     flex-direction: column;
@@ -110,88 +110,85 @@
     font-weight: bold;
 }
 
-/*fim-user-menu*/
-
 .study-image {
     width: 200px; /* Ajuste este valor conforme necessário */
     height: auto; /* Mantém a proporção da imagem */
 }
 
-/*Base*/
+/*fim-user-menu*/
 
-.welcome-message {
-    position: absolute;
-    top: 50px;
-    left: 270px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 20px;
-    margin-left: 320px;
+/*base*/
+
+.content {
+    color: white;
+    margin-left: 50px; 
 }
-.subtitle {
-    font-size: 18px;
-    font-weight: normal;
-    color: #ffffff;
-    margin-top: 10px;
+
+.activity-button {
+    background-color: #333; 
+    color: white;
+    border-color: rgb(255, 219, 151);
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
 }
-.container-message {
-    position: absolute;
-    top: 150px;
-    left: 270px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffffff;
-    margin-left: 200px;
+
+.activity-button:hover {
+    background-color: #555;
 }
-.progress-title {
-    margin-top: 100px;
-    margin-left: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #ffffff;
-    margin-left: 323px;  
+
+/*------------*/
+.hidden {
+    display: none;
 }
-.container {
-    position: absolute;
-    top: 150px;
-    left: 270px;
-    width: 30%; /* Diminuir a largura */
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 20px; /* Ajustar o tamanho da fonte */
-    color: #000000; /* Cor do texto */
-    margin-left: 300px;
-    margin-top: 2px;
+.visible {
+    display: block;
 }
-.start-learning-button {
-    position: absolute;
-    top: 220px;
-    left: 270px;
-    width: 30%; /* Diminuir a largura */
-    height: 60px; /* Aumentar a altura */
-    background-color: #201f1f;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 16px; /* Ajustar o tamanho da fonte */
-    color: #ffffff; /* Cor do texto */
+/*------------*/
+
+#activity-container {
+    margin-top: 7px;
+    border: 2px solid  rgb(255, 219, 151); /* Adiciona uma borda preta de 2px */
+    padding: 10px; /* Adiciona um pouco de preenchimento ao redor do conteúdo */
+    border-radius: 5px; /* Adiciona cantos arredondados à borda */
+    background-color: rgb(19, 4, 26); /* Adiciona uma cor de fundo roxa */
+    max-width: 600px; /* Define uma largura máxima */
+    margin-left: auto; /* Centraliza horizontalmente */
+    margin-right: auto; /* Centraliza horizontalmente */
+    text-align: center; /* Centraliza o texto */
+}
+
+#button-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 19px;
-    margin-left: 300px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
 }
 
-.start-learning-button i {
-    margin-right: 10px; /* Espaço entre o ícone e o texto */
+#start-button, #close-button {
+    background-color: rgb(78, 29, 84); /* Roxo */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    flex: 1;
 }
 
-.start-learning-button:hover {
-    background-color: #760273;
+#close-button {
+    background-color: rgb(78, 29, 84); /* Roxo */
+}
+
+#start-button:hover {
+    background-color: rgb(119, 2, 115); /* Roxo escuro */
+}
+
+#close-button:hover {
+    background-color: rgb(119, 2, 115); /* Roxo escuro*/
 }

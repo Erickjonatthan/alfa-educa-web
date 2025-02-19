@@ -4,12 +4,12 @@
     <script src="https://kit.fontawesome.com/fc5a8c4aa2.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlfaEduca</title>
-    <link rel="stylesheet" href="css/style-da-pagina-inicial.css">
+    <title>AlfaEduca - Atividade</title>
+    <link rel="stylesheet" href="css/style-da-atividade.css">
 </head>
 <body>
     <div class="user-photo" onclick="toggleUserMenu()">
-        <img id="profile-pic" src="" alt="User Photo">
+        <img src = imgPerfil.png alt="Foto do usuário">
     </div>
     <div id="user-menu" class="user-menu hidden">
         <button onclick="window.location.href='usuario.html'"><i class="fas fa-user-edit"></i> Editar Perfil</button>
@@ -18,7 +18,7 @@
     </div>
     <div class="sidebar">
         <div>
-            <div class="logo">  
+            <div class="logo">
                 <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\logo-alfa-educa.jpg" alt="logo" class="study-image">
             </div>
             <button onclick="window.location.href='pagina-inicial.html'">
@@ -32,24 +32,20 @@
             &copy; AlfaEduca Ltda
         </div>
     </div>
-    <div class="welcome-message">
-        Bem vindo, Usuário!
-        <div class="subtitle">
-            O que vamos aprender hoje com o AlfaEduca?
+    <div class="content">
+        <h1 class="page-title">Atividades</h1>
+        <p>Aqui você encontra todas as atividades disponíveis para você.</p>
+        <button class="activity-button" onclick="openActivityContainer()">Escrevendo uma palavra</button>
+        <div id="activity-container" class="hidden">
+            <h2>Escrevendo uma palavra</h2>
+            <p>Pratique a caligrafia</p>
+            <p>Nível: 1</p>
+            <p>Pontos: 200</p>
+            <div id="button-container">
+                <button id="start-button">Iniciar</button>
+                <button id="close-button">Fechar</button>
+            </div>
         </div>
-    </div>
-    <div class="progress-title">
-        <h4>Onde você parou:</h4>
-    </div>
-    <div class="container">
-        <h6>Ainda não começou com as atividades</h6>
-    </div>
-    <button class="start-learning-button" onclick="window.location.href='atividade.html'">
-        <i class="fas fa-play"></i> Começar a aprender
-    </button>
-    <div id="user-info">
-        <p id="user-name"></p>
-        <p id="user-email"></p>
     </div>
     <script src="js/user-menu.js"></script>
 </body>
