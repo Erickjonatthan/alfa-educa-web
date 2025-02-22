@@ -24,25 +24,15 @@
             &copy; AlfaEduca Ltda
         </div>
     </div>
-    <div class="content">
-        <div class="profile-icon">
-            <img id="profile-pic" src="" alt="User Photo">
+    <div class="user-menu">
+        <div class="profile-picture">
+            <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\user-logo.jpg" alt="Perfil do Usuário">
         </div>
-        <div class="user-info">
-            <p id="user-name"></p>
-            <p id="user-email"></p>
+        <div class="user-name">Nome do Usuário</div>
+        <div class="observations-box">
+            <textarea placeholder="Digite suas observações aqui..."></textarea>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const userData = JSON.parse(localStorage.getItem('userData'));
-            if (userData && userData.imgPerfil) {
-                document.getElementById('profile-pic').src = userData.imgPerfil;
-            }
-            document.getElementById('user-name').textContent = userData ? userData.nome : 'Nome do Usuário';
-            document.getElementById('user-email').textContent = userData ? userData.email : 'email@exemplo.com';
-        });
-    </script>
     <script src="js/user-menu.js"></script>
 </body>
 </html>

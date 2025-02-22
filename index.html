@@ -11,6 +11,22 @@
         <h1>AlfaEduca</h1>
         <button class="start-button">Comece Agora</button>
     </header>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const headerButton = document.querySelector('.start-button');
+            const mainButton = document.querySelector('.button-container .comece-agora');
+
+            const observer = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting) {
+                    headerButton.classList.add('hidden');
+                } else {
+                    headerButton.classList.remove('hidden');
+                }
+            });
+
+            observer.observe(mainButton);
+        });
+    </script>
     <div class="content-background"> <!-- Novo contêiner -->
         <div class="content-container">
             <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\estudante-sem-fundo.jpg" alt="Estudante" class="study-image">
