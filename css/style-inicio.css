@@ -35,6 +35,10 @@ header {
     margin-top: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra nas bordas */
 }
+.start-button:hover {
+    background-color: rgb(195, 25, 214);
+    border-color: rgb(195, 25, 214);
+}
 
 header h1 {
     font-size: 36px;
@@ -84,6 +88,9 @@ header h1 {
     transition: background-color 0.3s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra nas bordas */
 }
+.button-container .comece-agora:hover {
+    background-color: rgb(195, 25, 214);
+}
 
 .button-container .login{
     display: block;
@@ -105,9 +112,13 @@ header h1 {
     background-color: rgb(100, 13, 132);
 }
 
+.button-container .login:hover {
+    background-color: rgb(220, 220, 220);
+}
+
 .button-container .start-button:hover,
 .button-container .login-button:hover {
-    background-color: rgb(120, 13, 132);
+    background-color: rgb(195, 25, 214);
 }
 
 footer {
@@ -130,4 +141,8 @@ footer {
 .content-background {
     background-color: #9e44c2; /* Cor de fundo desejada */
     padding: 20px; /* Espaçamento interno */
+}
+
+.hidden {
+    display: none;
 }
