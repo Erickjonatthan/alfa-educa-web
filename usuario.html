@@ -29,9 +29,31 @@
             <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\user-logo.jpg" alt="Perfil do Usuário">
         </div>
         <div class="user-name">Nome do Usuário</div>
-        <div class="observations-box">
-            <textarea placeholder="Digite suas observações aqui..."></textarea>
+        <div class="user-level">Nível: 1</div>
+        <div class="xp-bar">
+            <div class="xp-progress" style="width: 40%;"></div>
         </div>
+        <div class="xp-text">XP: 40/100</div>
+    </div>
+    <div class="edit-section">
+        <h2>Altere seus dados</h2>
+        <p>Preencha os campos abaixo para alterar suas informações</p>
+        <form class="edit-form">
+            <label for="username">Nome do Usuário:</label>
+            <input type="text" id="username" name="username" value="Nome do Usuário">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="usuario@example.com">
+            
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password">
+            
+            <label for="profile-picture">Imagem de Perfil:</label>
+            <input type="file" id="profile-picture" name="profile-picture">
+            
+            <button type="submit">Salvar alterações</button>
+            <button type="button" class="delete-account">Excluir conta</button>
+        </form>
     </div>
     <script src="js/user-menu.js"></script>
 </body>
