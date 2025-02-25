@@ -80,7 +80,7 @@ body {
 .user-menu {
     text-align: center;
     margin-top: 100px;
-    margin-left: 400px;
+    margin-left: 250px;
 }
 
 .profile-picture img {
@@ -91,36 +91,108 @@ body {
 }
 
 .user-name {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     margin-top: 10px;
     color: #ffff;
 }
 
-.user-observations {
-    font-size: 14px;
-    color: #666;
-    margin-top: 5px;
-}
 
-.observations-box {
-    margin-top: 20px;
-    text-align: left;
-}
 
-.observations-box textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
-    font-size: 14px;
-}
 
 .profile-picture img {
     width: 150px; /* Novo tamanho da largura */
     height: 150px; /* Novo tamanho da altura */
     border-radius: 50%;
     object-fit: cover;
+}
+
+.user-level {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #ffff;
+}
+
+.xp-bar {
+    width: 80%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.xp-progress {
+    height: 20px;
+    background-color: orange;
+    width: 40%; /* Ajuste a largura conforme necessário */
+    border-radius: 10px 0 0 10px;
+}
+
+.xp-text {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.edit-section {
+    margin-top: 20px;
+    margin-left: 70px;
+    text-align: center;
+    color: #ffff;
+}
+
+.edit-section h2 {
+    font-size: 24px;
+    margin-left: 70px;
+    margin-bottom: 10px;
+    color: #ffff;
+}
+
+.edit-section p {
+    font-size: 16px;
+    margin-left: 70px;
+    margin-bottom: 20px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-form label {
+    font-size: 14px;
+    margin-left: 70px;
+    margin-top: 10px;
+    color: #ffff;
+}
+
+.edit-form input {
+    width: 80%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-left: 70px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-form button {
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 70px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 217, 0);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.edit-form .delete-account {
+    background-color: red;
+    margin-left: 70px;
+    margin-top: 10px;
 }
