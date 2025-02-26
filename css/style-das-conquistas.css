@@ -9,7 +9,7 @@ body {
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: rgb(78, 29, 84);
+    background-color:rgb(78, 29, 84);
     color: white;
     display: flex;
     flex-direction: column;
@@ -60,14 +60,14 @@ body {
     top: 10px;
     right: 10px;
     border: 2px solid #adadad;
-    overflow: hidden;
+    overflow: hidden; 
     cursor: pointer;
 }
 
 .user-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; 
 }
 .user-menu {
     position: absolute;
@@ -110,86 +110,57 @@ body {
     font-weight: bold;
 }
 
+/*fim-user-menu*/
+
 .study-image {
     width: 200px;
     height: auto; 
 }
 
-/*fim-user-menu*/
-
-/*base*/
+/*Base*/
 
 .content {
-    color: white;
-    margin-left: 50px; 
+    margin-top: 25px;
 }
 
-.activity-button {
-    background-color: #333; 
-    color: white;
-    border-color: rgb(255, 219, 151);
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 250px;
+.titulo {
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    margin-left: 400px;
 }
 
-.activity-button:hover {
-    background-color: #555;
-}
-
-/*------------*/
-.hidden {
-    display: none;
-}
-.visible {
-    display: block;
-}
-/*------------*/
-
-#activity-container {
-    margin-top: 7px;
-    border: 2px solid  rgb(255, 219, 151); 
-    padding: 10px; 
-    border-radius: 5px; 
-    background-color: rgb(19, 4, 26); 
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center; 
-}
-
-#button-container {
+.conquista-container {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 400px;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    border: 1px solid rgb(240, 190, 98);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-left: 350px;
 }
 
-#start-button, #close-button {
-    background-color: rgb(78, 29, 84); /* Roxo */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    flex: 1;
+.conquista-imagem {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
 }
 
-#close-button {
-    background-color: rgb(78, 29, 84); /* Roxo */
+.conquista-texto {
+    text-align: left;
+    color:  #ffffff;
+    font-weight: bold;
 }
 
-#start-button:hover {
-    background-color: rgb(119, 2, 115); /* Roxo escuro */
+.conquista-texto p {
+    font-size: 18px;
+    margin: 0;
 }
 
-#close-button:hover {
-    background-color: rgb(119, 2, 115); /* Roxo escuro*/
+.conquista-texto h1 {
+    font-size: 18px;
+    margin: 5px 0 0 0;
 }
