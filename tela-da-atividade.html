@@ -5,14 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlfaEduca</title>
-    <link rel="stylesheet" href=css/style-da-tela-da-atividade.css>
+    <link rel="stylesheet" href=css/style-tela-da-atividade.css>
 </head>
 <body>
-    <p>Escreva uma palavra</p>
-    <p>Pratique a caligrafia</p>
-    <input type="text" placeholder="Escreva sua resposta aqui">
-    <button type="button">Enviar Resposta</button>
-    <br><br>
-    <button type="button">Voltar</button>
+    <h1 class="titulo">Soma</h1>
+    <p class="descricao">Somar números</p>
+    <p class="exemplo">10 + 10</p>
+    <input type="text" class="resposta" placeholder="Escreva sua resposta aqui">
+    <br>
+    <button class="btn-enviar" onclick="enviarResposta()">Enviar Resposta</button>
+    <p class="tentativas">Tentativas: <span id="tentativas">0</span></p>
+    <button class="btn-voltar" onclick="voltar()">Voltar</button>
+
+    <script>
+        let tentativas = 0;
+
+        function enviarResposta() {
+            const resposta = document.querySelector('.resposta').value;
+            if (resposta == '20') {
+                alert('Resposta correta!');
+            } else {
+                alert('Resposta incorreta. Tente novamente.');
+                tentativas++;
+                document.getElementById('tentativas').innerText = tentativas;
+            }
+        }
+
+        function voltar() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>     

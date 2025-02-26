@@ -105,7 +105,7 @@ header h1 {
     color: rgb(100, 13, 132);
     background-color: rgb(255, 255, 255);
     transition: background-color 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra nas bordas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .button-container .login-button {
@@ -139,8 +139,8 @@ footer {
 }
 
 .content-background {
-    background-color: #9e44c2; /* Cor de fundo desejada */
-    padding: 20px; /* Espaçamento interno */
+    background-color: #9e44c2;
+    padding: 20px;
 }
 
 .hidden {
