@@ -13,6 +13,11 @@ function toggleUserMenu() {
   userMenu.classList.toggle('hidden');
 }
 
+document.querySelector('.logout').addEventListener('click', function() {
+  localStorage.clear();
+  window.location.href = 'login.html';
+});
+
 async function fetchUserData() {
   const loading = document.getElementById('loading');
   loading.style.display = 'flex'; // Mostrar o loading
