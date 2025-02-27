@@ -1,3 +1,13 @@
+function checkTokenAndRedirect() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        localStorage.clear();
+        window.location.href = 'login.html';
+    }
+}
+
+checkTokenAndRedirect();
+
 // Função para buscar dados do usuário
 async function fetchUserData() {
     const loading = document.getElementById('loading');
