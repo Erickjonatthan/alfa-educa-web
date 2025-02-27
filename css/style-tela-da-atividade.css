@@ -3,6 +3,7 @@ body {
     text-align: center;
     background-color: pink; 
 }
+
 .loading {
     display: none; /* Inicialmente escondido */
     position: fixed;
@@ -29,6 +30,7 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
 input, button {
     margin: 10px;
     padding: 10px;
@@ -37,6 +39,7 @@ input, button {
 
 input {
     width: 400px;
+    margin-top: 20px; /* Adiciona margem superior */
 }
 
 button {
@@ -47,6 +50,7 @@ button {
     width: 150px;
     border-radius: 10px;
     font-size: 14px;
+    margin-top: 20px; /* Adiciona margem superior */
 }
 
 button:hover {
@@ -67,15 +71,10 @@ button:hover {
 
 .resposta {
     font-size: 15px;
-    margin-top: 0px;
+    margin-top: 20px; /* Ajusta a margem superior */
     color: rgb(0, 0, 0);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 10px;
     border: none;
-
 }
 
 .descricao {

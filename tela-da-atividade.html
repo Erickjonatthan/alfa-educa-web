@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="css/style-tela-da-atividade.css">
 </head>
 <body>
-    <h1 class="titulo">Soma</h1>
-    <p class="descricao">Somar números</p>
-    <p class="exemplo">10 + 10</p>
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
+    <h1 class="titulo"></h1>
+    <p class="descricao"></p>
+    <p class="exemplo"></p>
     <input type="text" class="resposta" placeholder="Escreva sua resposta aqui">
     <br>
     <button class="btn-enviar" onclick="enviarResposta()">Enviar Resposta</button>
@@ -19,6 +22,14 @@
 
     <script>
         let tentativas = 0;
+
+        function mostrarLoading() {
+            document.getElementById('loading').style.display = 'flex';
+        }
+
+        function esconderLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
 
         async function criarResposta(token, resposta, atividadeId, usuarioId) {
             try {
@@ -69,28 +80,38 @@
 
         async function enviarResposta() {
             const resposta = document.querySelector('.resposta').value;
+            if (!resposta.trim()) {
+                alert('Por favor, escreva sua resposta antes de enviar.');
+                return;
+            }
+
             const token = localStorage.getItem('token');
             const atividadeId = localStorage.getItem('atividadeId');
             const usuarioId = localStorage.getItem('contaId');
             console.log('atividadeId:', atividadeId);
             console.log('usuarioId:', usuarioId); 
 
+            mostrarLoading();
 
-            if (resposta == '20') {
-                alert('Resposta correta!');
-                try {
-                    await criarResposta(token, resposta, atividadeId, usuarioId);
-                } catch (error) {
-                    alert(error.message);
+            try {
+                const respostaCriada = await criarResposta(token, resposta, atividadeId, usuarioId);
+                if (respostaCriada.isFinalizada) {
+                    alert('Resposta correta!');
+                    localStorage.removeItem('atividadeId'); // Remove o atividadeId ao concluir
+                } else {
+                    alert('Resposta incorreta. Tente novamente.');
+                    tentativas++;
+                    document.getElementById('tentativas').innerText = tentativas;
                 }
-            } else {
-                alert('Resposta incorreta. Tente novamente.');
-                tentativas++;
-                document.getElementById('tentativas').innerText = tentativas;
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                esconderLoading();
             }
         }
 
         function voltar() {
+            localStorage.removeItem('atividadeId'); // Remove o atividadeId ao voltar
             window.history.back();
         }
 
@@ -104,6 +125,8 @@
                 console.error('Atividade ID ou token não encontrado no localStorage');
                 return;
             }
+
+            mostrarLoading();
 
             try {
                 const response = await fetch(`https://alfa-educa-server.onrender.com/atividade/${atividadeId}`, {
@@ -124,6 +147,8 @@
                 document.querySelector('.exemplo').textContent = atividade.descricao;
             } catch (error) {
                 console.error('Erro ao buscar dados da atividade:', error.message);
+            } finally {
+                esconderLoading();
             }
         }
 
