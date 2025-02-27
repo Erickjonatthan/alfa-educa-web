@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="css/style-do-usuario.css">
 </head>
 <body>
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
     <div class="sidebar">
         <div>
             <div class="logo">
-                <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\logo-alfa-educa.jpg" alt="logo" class="study-image">
+                <img src="./imagem/logo-alfa-educa.jpg" alt="logo" class="study-image">
             </div>
             <button onclick="window.location.href='pagina-inicial.html'">
                 <i class="fa-solid fa-house"></i> Início
@@ -26,19 +29,19 @@
     </div>
     <div class="user-menu">
         <div class="profile-picture">
-            <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\user-logo.jpg" alt="Perfil do Usuário">
+            <img src="./imagem/user-logo.jpg" alt="Perfil do Usuário">
         </div>
-        <div class="user-name">Nome do Usuário</div>
-        <div class="user-level">Nível: 1</div>
+        <div id="user-name" class="user-name">Nome do Usuário</div>
+        <div class="user-level">Nível: <span id="user-level">1</span></div>
         <div class="xp-bar">
-            <div class="xp-progress" style="width: 50%;"></div>
+            <div class="xp-progress" id="xp-progress" style="width: 50%;"></div>
         </div>
-        <div class="xp-text">XP: 50/100</div>
+        <div class="xp-text"><span id="xp-text">50/100</span></div>
     </div>
     <div class="edit-section">
         <h2>Altere seus dados</h2>
         <p>Preencha os campos abaixo para alterar suas informações</p>
-        <form class="edit-form">
+        <form class="edit-form" id="edit-form">
             <label for="username">Nome do Usuário:</label>
             <input type="text" id="username" name="username" value="Nome do Usuário">
             
@@ -51,10 +54,11 @@
             <label for="profile-picture">Imagem de Perfil:</label>
             <input type="file" id="profile-picture" name="profile-picture">
             
-            <button type="submit">Salvar alterações</button>
-            <button type="button" class="delete-account">Excluir conta</button>
+            <button type="submit" id="save-button" disabled>Salvar alterações</button>
+            <button type="button" class="delete-account" id="delete-account-button">Excluir conta</button>
+
         </form>
     </div>
-    <script src="js/user-menu.js"></script>
+    <script src="js/user-perfil.js"></script>
 </body>
 </html>

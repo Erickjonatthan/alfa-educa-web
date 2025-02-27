@@ -1,3 +1,12 @@
+function checkTokenAndRedirect() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        localStorage.clear();
+        window.location.href = 'login.html';
+    }
+}
+
+checkTokenAndRedirect();
 function toggleUserMenu() {
     const userMenu = document.getElementById('user-menu');
     userMenu.classList.toggle('hidden');
@@ -12,8 +21,12 @@ document.addEventListener('click', function(event) {
 });
 
 async function fetchUserData() {
+    const loading = document.getElementById('loading');
+    loading.style.display = 'flex'; // Mostrar o loading
+
     const accountId = localStorage.getItem('contaId');
     const token = localStorage.getItem('token');
+    console.log('Token:', token);
 
     if (!accountId || !token) {
         console.error('Account ID ou token não encontrado no localStorage');
@@ -39,12 +52,12 @@ async function fetchUserData() {
         localStorage.setItem('userData', JSON.stringify(userData));
 
         const userNameElement = document.getElementById('user-name');
-        const userEmailElement = document.getElementById('user-email');
-        const userPhotoElement = document.querySelector('user-photo img');
-        if (userNameElement && userEmailElement && userPhotoElement) {
+        const userPhotoElement = document.querySelector('.user-photo img');
+        if (userNameElement && userPhotoElement) {
             userNameElement.textContent = userData.nome;
-            userEmailElement.textContent = userData.email;
-            userPhotoElement.src = userData.imgPerfil;
+            userPhotoElement.src = `data:image/jpeg;base64,${userData.imgPerfil}`;
+            // Esconder o loading
+            loading.style.display = 'none';
         }
     } catch (error) {
         console.error('Erro ao buscar dados do usuário:', error.message);
@@ -54,21 +67,6 @@ async function fetchUserData() {
 fetchUserData();
 
 document.querySelector('.logout').addEventListener('click', function() {
-
     localStorage.clear();
-
-    window.location.href = 'index.html';
-});
-
-function openActivityContainer() {
-    const container = document.getElementById('activity-container');
-    container.classList.remove('hidden');
-}
-
-document.getElementById('close-button').addEventListener('click', function() {
-    document.getElementById('activity-container').classList.add('hidden');
-});
-
-document.getElementById('start-button').addEventListener('click', function() {
-    // Lógica para iniciar a atividade
+    window.location.href = 'login.html';
 });
