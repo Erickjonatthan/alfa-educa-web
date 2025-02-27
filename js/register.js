@@ -11,6 +11,9 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
         senha: senha,
     };
 
+    const loading = document.getElementById('loading');
+    loading.style.display = 'flex'; // Mostrar o loading
+
     try {
         const response = await fetch('https://alfa-educa-server.onrender.com/cadastro', {
             method: 'POST',
@@ -26,9 +29,34 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
 
         const result = await response.json();
 
-        // Exibir mensagem de sucesso
-    alert('Usuário cadastrado com sucesso!');
+        // Realizar login automaticamente
+        const loginData = {
+            login: email,
+            senha: senha,
+        };
+
+        const loginResponse = await fetch('https://alfa-educa-server.onrender.com/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+        });
+
+        if (!loginResponse.ok) {
+            throw new Error('Erro no login: ' + loginResponse.statusText);
+        }
+
+        const loginResult = await loginResponse.json();
+        const { dadosToken } = loginResult;
+        localStorage.setItem('token', dadosToken.token);
+        localStorage.setItem('contaId', dadosToken.contaId);
+        window.location.href = 'pagina-inicial.html';
+
     } catch (error) {
-        console.log('Erro ao cadastrar usuário: ' + error.message);
+        console.log('Erro ao cadastrar ou logar usuário: ' + error.message);
+        alert('Erro: ' + error.message);
+    } finally {
+        loading.style.display = 'none'; // Esconder o loading
     }
 });

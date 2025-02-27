@@ -9,26 +9,53 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         senha: senha,
     };
 
+    const loading = document.getElementById('loading');
+    loading.style.display = 'flex'; // Mostrar o loading
+
     try {
         const response = await fetch('https://alfa-educa-server.onrender.com/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(userData),
         });
 
-        if (!response.ok) {
-            throw new Error('Erro na requisição: ' + response.statusText);
+        let data;
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.indexOf('application/json') !== -1) {
+            data = await response.json();
+        } else {
+            data = await response.text();
         }
 
-        const result = await response.json();
-        
-        localStorage.setItem('token', result.token);
-        localStorage.setItem('contaId', result.contaId);
-
-        window.location.href = 'pagina-inicial.html';
+        if (response.ok) {
+            const { dadosToken } = data;
+            localStorage.setItem('token', dadosToken.token);
+            localStorage.setItem('contaId', dadosToken.contaId);
+            window.location.href = 'pagina-inicial.html';
+        } else {
+            console.log('Falha no login:', response.status);
+            switch (response.status) {
+                case 400:
+                    alert('Erro: Requisição inválida. Verifique os dados e tente novamente.');
+                    break;
+                case 401:
+                    alert('Erro: Email ou senha inválido. Tente novamente.');
+                    break;
+                case 500:
+                    alert('Erro: Erro no servidor. Tente novamente mais tarde.');
+                    break;
+                default:
+                    alert('Erro: Ocorreu um erro. Tente novamente.');
+                    break;
+            }
+            console.log('Falha no login:', data.message || data);
+        }
     } catch (error) {
-        console.log('Erro ao logar usuário: ' + error.message);
+        console.log('Erro durante o login:', error);
+        alert('Erro: Ocorreu um erro durante o login. Tente novamente.');
+    } finally {
+        loading.style.display = 'none'; // Esconder o loading
     }
 });
