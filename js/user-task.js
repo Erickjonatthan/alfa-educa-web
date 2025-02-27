@@ -69,9 +69,30 @@ document.querySelector('.logout').addEventListener('click', function() {
     window.location.href = 'login.html';
 });
 
-function openActivityContainer() {
-    const container = document.getElementById('activity-container');
-    container.classList.remove('hidden');
+async function listarResposta(token) {
+    try {
+        const response = await fetch("https://alfa-educa-server.onrender.com/resposta/usuario/respostas", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        if (!response.ok) {
+            let errorMessage = "Erro ao listar resposta";
+            if (response.status === 401) {
+                errorMessage = "Não autorizado. Verifique suas credenciais.";
+            } else if (response.status === 500) {
+                errorMessage = "Erro no servidor. Tente novamente mais tarde.";
+            }
+            throw new Error(errorMessage);
+        }
+        const respostas = await response.json();
+        return respostas;
+    } catch (error) {
+        console.error("Erro ao listar resposta:", error);
+        throw error;
+    }
 }
 
 async function listarAtividades(token) {
@@ -108,16 +129,28 @@ async function renderizarAtividades() {
 
     try {
         const atividades = await listarAtividades(token);
+        const respostas = await listarResposta(token);
+        console.log('Atividades:', atividades);
+        console.log('Respostas:', respostas);
         const activitiesList = document.getElementById('activities-list');
         activitiesList.innerHTML = '';
 
         atividades
             .filter(atividade => atividade.tipo !== 'CALIGRAFIA') // Filtra atividades do tipo CALIGRAFIA
             .forEach(atividade => {
+                const respostasAtividade = respostas.filter(r => r.atividadeId === atividade.id);
+                console.log('Respostas da Atividade:', respostasAtividade);
+                const finalizada = respostasAtividade.some(r => r.finalizada);
+                console.log('Finalizada:', finalizada);
+
                 const activityButton = document.createElement('button');
                 activityButton.className = 'activity-button';
                 activityButton.textContent = atividade.titulo;
-                activityButton.onclick = () => openActivityContainer(atividade);
+                activityButton.onclick = () => openActivityContainer(atividade, finalizada);
+
+                if (finalizada) {
+                    activityButton.style.borderColor = 'green';
+                }
 
                 activitiesList.appendChild(activityButton);
             });
@@ -126,22 +159,39 @@ async function renderizarAtividades() {
     }
 }
 
-function openActivityContainer(atividade) {
+function openActivityContainer(atividade, finalizada) {
     const container = document.getElementById('activity-container');
     container.querySelector('h2').textContent = atividade.titulo;
     container.querySelector('p:nth-of-type(1)').textContent = atividade.subtitulo;
     container.querySelector('p:nth-of-type(2)').textContent = `Nível: ${atividade.nivel}`;
     container.querySelector('p:nth-of-type(3)').textContent = `Pontos: ${atividade.pontos}`;
+    
+    const resposta = atividade.respostaCorreta; // Supondo que a resposta esteja no objeto atividade
+    const responseElement = container.querySelector('#activity-response');
+    if (resposta) {
+        responseElement.textContent = `Resposta Correta: ${resposta}`;
+        responseElement.classList.remove('hidden');
+    } else {
+        responseElement.classList.add('hidden');
+    }
+
     container.classList.remove('hidden');
 
-    document.getElementById('start-button').onclick = () => {
-        localStorage.setItem('atividadeId', atividade.id); // Armazena o ID da atividade no localStorage
-        window.location.href = 'tela-da-atividade.html';
-    };
+    const startButton = document.getElementById('start-button');
+    if (finalizada) {
+        startButton.textContent = 'Finalizada';
+        startButton.disabled = true;
+    } else {
+        startButton.textContent = 'Iniciar';
+        startButton.disabled = false;
+        startButton.onclick = () => {
+            localStorage.setItem('atividadeId', atividade.id); // Armazena o ID da atividade no localStorage
+            window.location.href = 'tela-da-atividade.html';
+        };
+    }
 
     document.getElementById('close-button').onclick = () => {
         container.classList.add('hidden');
     };
 }
-
 renderizarAtividades();
