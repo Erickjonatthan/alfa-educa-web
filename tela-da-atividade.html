@@ -1,39 +1,34 @@
-<!DOCTYPE   html>
-<html   lang="pt-br">
-<head>
-    <script src="https://kit.fontawesome.com/fc5a8c4aa2.js" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <script
+      src="https://kit.fontawesome.com/fc5a8c4aa2.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AlfaEduca</title>
-    <link rel="stylesheet" href=css/style-tela-da-atividade.css>
-</head>
-<body>
-    <h1 class="titulo">Soma</h1>
-    <p class="descricao">Somar números</p>
-    <p class="exemplo">10 + 10</p>
-    <input type="text" class="resposta" placeholder="Escreva sua resposta aqui">
-    <br>
-    <button class="btn-enviar" onclick="enviarResposta()">Enviar Resposta</button>
+    <link rel="stylesheet" href="css/style-tela-da-atividade.css" />
+  </head>
+  <body>
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+    </div>
+    <h1 class="titulo"></h1>
+    <p class="descricao"></p>
+    <p class="exemplo"></p>
+    <input
+      type="text"
+      class="resposta"
+      placeholder="Escreva sua resposta aqui"
+    />
+    <br />
+    <button class="btn-enviar" onclick="enviarResposta()">
+      Enviar Resposta
+    </button>
     <p class="tentativas">Tentativas: <span id="tentativas">0</span></p>
     <button class="btn-voltar" onclick="voltar()">Voltar</button>
 
-    <script>
-        let tentativas = 0;
-
-        function enviarResposta() {
-            const resposta = document.querySelector('.resposta').value;
-            if (resposta == '20') {
-                alert('Resposta correta!');
-            } else {
-                alert('Resposta incorreta. Tente novamente.');
-                tentativas++;
-                document.getElementById('tentativas').innerText = tentativas;
-            }
-        }
-
-        function voltar() {
-            window.history.back();
-        }
-    </script>
-</body>
-</html>     
+    <script src="js/user-tela-atividade.js"></script>
+  </body>
+</html>

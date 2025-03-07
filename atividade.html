@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="css/style-da-atividade.css">
 </head>
 <body>
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
     <div class="user-photo" onclick="toggleUserMenu()">
-        <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\user-logo.jpg" alt="Perfil do Usuário">
+        <img src="./imagem/user-logo.jpg" alt="Perfil do Usuário">
     </div>
     <div id="user-menu" class="user-menu hidden">
         <button onclick="window.location.href='usuario.html'"><i class="fas fa-user-edit"></i> Editar Perfil</button>
@@ -19,7 +22,7 @@
     <div class="sidebar">
         <div>
             <div class="logo">
-                <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\logo-alfa-educa.jpg" alt="logo" class="study-image">
+                <img src="./imagem/logo-alfa-educa.jpg" alt="logo" class="study-image">
             </div>
             <button onclick="window.location.href='pagina-inicial.html'">
                 <i class="fa-solid fa-house"></i> Início
@@ -35,18 +38,20 @@
     <div class="content">
         <h1 class="page-title">Atividades</h1>
         <p>Aqui você encontra todas as atividades disponíveis para você.</p>
-        <button class="activity-button" onclick="openActivityContainer()">Soma</button>
+        <div id="activities-list"></div>
         <div id="activity-container" class="hidden">
-            <h2>Soma</h2>
-            <p>Somar números</p>
-            <p>Nível: 1</p>
-            <p>Pontos: 1</p>
+            <h2></h2>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p id="activity-response"></p>
+    
             <div id="button-container">
-                <button id="start-button" onclick="window.location.href='tela-da-atividade.html'">Iniciar</button>
+                <button id="start-button">Iniciar</button>
                 <button id="close-button">Fechar</button>
             </div>
         </div>
     </div>
-    <script src="js/user-menu.js"></script>
+    <script src="js/user-task.js"></script>
 </body>
 </html>
