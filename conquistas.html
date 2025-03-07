@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="css/style-das-conquistas.css">
 </head>
 <body>
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
     <div class="user-photo" onclick="toggleUserMenu()">
-        <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\user-logo.jpg" alt="Perfil do Usuário">
+        <img src="./imagem/user-logo.jpg" alt="Perfil do Usuário">
     </div>
     <div id="user-menu" class="user-menu hidden">
         <button onclick="window.location.href='usuario.html'"><i class="fas fa-user-edit"></i> Editar Perfil</button>
@@ -19,7 +22,7 @@
     <div class="sidebar">
         <div>
             <div class="logo">
-                <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\logo-alfa-educa.jpg" alt="logo" class="study-image">
+                <img src="./imagem/logo-alfa-educa.jpg" alt="logo" class="study-image">
             </div>
             <button onclick="window.location.href='pagina-inicial.html'">
                 <i class="fa-solid fa-house"></i> Início
@@ -35,13 +38,9 @@
     <div class="content">
         <h1 class="titulo">Suas conquistas</h1>
         <div class="conquista-container">
-            <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\trofeu.avif" alt="Troféu" class="conquista-imagem">
-            <div class="conquista-texto">
-                <p>Parabéns</p>
-                <h1>Alcançou o nível 1</h1>
-            </div>
+            <!-- As conquistas serão exibidas aqui -->
         </div>
     </div>
-    <script src="js/user-menu.js"></script>
+    <script src="js/user-conquista.js"></script>
 </body>
 </html>

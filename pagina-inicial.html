@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="css/style-da-pagina-inicial.css">
 </head>
 <body>
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
     <div class="user-photo" onclick="toggleUserMenu()">
-        <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\user-logo.jpg" alt="Perfil do Usuário">
+        <img src="./imagem/user-logo.jpg" alt="Perfil do Usuário">
     </div>
     <div id="user-menu" class="user-menu hidden">
         <button onclick="window.location.href='usuario.html'"><i class="fas fa-user-edit"></i> Editar Perfil</button>
@@ -19,7 +22,7 @@
     <div class="sidebar">
         <div>
             <div class="logo">  
-                <img src="C:\Users\Henkenskk\Documents\GitHub\game-finder-web\imagem\logo-alfa-educa.jpg" alt="logo" class="study-image">
+                <img src="./imagem/logo-alfa-educa.jpg" alt="logo" class="study-image">
             </div>
             <button onclick="window.location.href='pagina-inicial.html'">
                 <i class="fa-solid fa-house"></i> Início
@@ -33,7 +36,7 @@
         </div>
     </div>
     <div class="welcome-message">
-        Bem vindo, Usuário!
+        Bem vindo, <span id="user-name"></span></span>!
         <div class="subtitle">
             O que vamos aprender hoje com o AlfaEduca?
         </div>
@@ -47,10 +50,6 @@
     <button class="start-learning-button" onclick="window.location.href='atividade.html'">
         <i class="fas fa-play"></i> Começar a aprender
     </button>
-    <div id="user-info">
-        <p id="user-name"></p>
-        <p id="user-email"></p>
-    </div>
     <script src="js/user-menu.js"></script>
 </body>
 </html>
