@@ -63,7 +63,7 @@
                     </label>
 
 
-                    <a class="senha" href="#">Esqueceu a senha?</a>
+                    <a class="senha" id="esqueceuSenhaLink" href="#">Esqueceu a senha?</a>
                     <button class="btn btn-second" type="submit">Entrar</button>
                 </form><!-- final_form -->
             </div><!-- final_segunda_coluna -->         
@@ -72,5 +72,11 @@
     <script src="js/app.js"></script>
     <script src="js/register.js"></script>
     <script src="js/login.js"></script>
+    <script>
+        document.getElementById('esqueceuSenhaLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            window.location.href = 'esqueceu-senha.html';
+        });
+    </script>
 </body>
 </html>
