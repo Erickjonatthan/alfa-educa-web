@@ -7,13 +7,16 @@
     <title>Esqueceu a Senha</title>
 </head>
 <body>
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
     <div class="container">
         <img src="imagem/AlfaEduca-logo.jpg" alt="Logo" class="logo">
         <h1>Redefinir Senha</h1>
         <p>Para redefinir sua senha, digite o email que foi cadastrado com sua conta. Você receberá uma nova senha que deve ser alterada depois.</p>
-        <form>            
-            <label for="nova-senha">Email</label>
-            <input type="password" id="Email" placeholder="Digite seu email" required>
+        <form id="forgot-password-form">            
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Digite seu email" required>
             
             <button type="submit" class="btn-enviar">Enviar</button>
         
@@ -21,5 +24,6 @@
             <button type="button" class="btn-voltar" onclick="window.location.href='login.html'">Voltar</button>
         </form>
     </div>
+    <script src="/js/user-esqueci-senha.js"></script>
 </body>
 </html>

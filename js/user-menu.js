@@ -55,7 +55,9 @@ async function fetchUserData() {
         const userPhotoElement = document.querySelector('.user-photo img');
         if (userNameElement && userPhotoElement) {
             userNameElement.textContent = userData.nome;
-            userPhotoElement.src = `data:image/jpeg;base64,${userData.imgPerfil}`;
+            if (userData.imgPerfil) {
+                userPhotoElement.src = `data:image/jpeg;base64,${userData.imgPerfil}`;
+            }
             // Esconder o loading
             loading.style.display = 'none';
         }
