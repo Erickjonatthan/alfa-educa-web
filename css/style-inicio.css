@@ -218,6 +218,14 @@ footer {
     color: #9e44c2;
 }
 
+.video-text-container a {
+  color: #9e44c2;
+  text-decoration: none;
+}
+
+.video-text-container a:hover {
+  text-decoration: underline;
+}
 .separator {
     border: none;
     border-top: 10px solid white;
@@ -242,30 +250,6 @@ footer {
     padding: 20px;
 }
 
-.project-info {
-  margin: 20px 130px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.project-info h3 {
-  color: #9e44c2;
-}
-
-.project-info p, .project-info ul {
-  margin: 10px 0;
-}
-
-.project-info a {
-  color: #9e44c2;
-  text-decoration: none;
-}
-
-.project-info a:hover {
-  text-decoration: underline;
-}
 
 .footer {
   background-color: white;
