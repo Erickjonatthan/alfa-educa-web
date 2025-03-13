@@ -59,7 +59,7 @@ header {
     right: 20px;
     margin-right: 80px;
     margin-top: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra nas bordas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 .start-button:hover {
     background-color: rgb(195, 25, 214);
@@ -83,14 +83,14 @@ header h1 {
     font-weight: bold;
     font-size: 40px;
     color: rgb(255, 255, 255);
-    width: 80%; /* Ajuste a largura conforme necessário */
+    width: 80%;
     text-align: center;
 }
 
 .button-container {
     position: absolute;
     top: 60%;
-    left: 75%; /* Ajuste de 50% para 60% */
+    left: 75%;
     transform: translate(-50%, -50%);
     text-align: center;
     display: flex;
@@ -112,7 +112,7 @@ header h1 {
     color: white;
     background-color: rgb(150, 13, 132);
     transition: background-color 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra nas bordas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .button-container .comece-agora:hover {
     background-color: rgb(195, 25, 214);
@@ -164,11 +164,60 @@ footer {
     margin-top: 100px;
 }
 
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(41, 2, 51) 100%);
+}
+
 .content-background {
     background-color: #9e44c2;
     padding: 20px;
+    margin-bottom: 100px;
 }
 
 .hidden {
     display: none;
+}
+
+.video-container {
+    margin-top: 20px;
+    display: flex;
+    margin-left: 130px;
+}
+
+.video-container iframe {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.video-text-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.text-container {
+    flex: 1;
+    margin-left: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-container h2, .text-container h3 {
+    color: #9e44c2;
+}
+
+.separator {
+    border: none;
+    border-top: 10px solid white;
+    border-radius: 10px;
+    margin: 20px 0;
+    width: 100%;
 }
