@@ -30,7 +30,11 @@ body {
     overflow-x: hidden;
     padding-top: 80px; /* Adicione padding para evitar que o conteúdo fique atrás do cabeçalho fixo */
     margin: 0; /* Remove margens padrão */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
 header {
     position: fixed;
     top: 0;
@@ -73,6 +77,7 @@ header h1 {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 130px;
+    font-family: "Happy Monkey", system-ui;  
 }
 
 .centered-text {
@@ -158,8 +163,8 @@ footer {
 }
 
 .study-image {
-    width: 1400px;
-    height: auto;
+    width: 1150px;
+    height: 520px;
     margin-left: 80px;
     margin-top: 100px;
 }
@@ -175,8 +180,7 @@ footer {
 
 .content-background {
     background-color: #9e44c2;
-    padding: 20px;
-    margin-bottom: 100px;
+    flex: 1;
 }
 
 .hidden {
@@ -198,7 +202,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 20px;
+    margin: 20px;
 }
 
 .text-container {
@@ -219,5 +223,62 @@ footer {
     border-top: 10px solid white;
     border-radius: 10px;
     margin: 20px 0;
+    width: 80%;
+    /* centraliza */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.sobre-nos{
+   /* alinha no centro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    color: #fff;
+    padding: 20px;
+}
+
+.project-info {
+  margin: 20px 130px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-info h3 {
+  color: #9e44c2;
+}
+
+.project-info p, .project-info ul {
+  margin: 10px 0;
+}
+
+.project-info a {
+  color: #9e44c2;
+  text-decoration: none;
+}
+
+.project-info a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  background-color: white;
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  position: relative;
+}
+
+@media (min-height: 800px) {
+  .footer {
+    position: fixed;
+    bottom: 0;
     width: 100%;
+  }
 }
