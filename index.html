@@ -1,69 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AlfaEduca</title>
-    <link rel="icon" href="imagem/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style-inicio.css">
-</head>
-<body>
+    <link rel="icon" href="imagem/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style-inicio.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header>
-        <h1>AlfaEduca</h1>
-        <button class="start-button">Comece Agora</button>
+      <h1>AlfaEduca</h1>
+      <button class="start-button" onclick="window.location.href='login.html'">
+        Comece Agora
+      </button>
     </header>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const headerButton = document.querySelector('.start-button');
-            const mainButton = document.querySelector('.button-container .comece-agora');
+      document.addEventListener("DOMContentLoaded", function () {
+        const headerButton = document.querySelector(".start-button");
+        const mainButton = document.querySelector(
+          ".button-container .comece-agora"
+        );
 
-            const observer = new IntersectionObserver(function(entries) {
-                if (entries[0].isIntersecting) {
-                    headerButton.classList.add('hidden');
-                } else {
-                    headerButton.classList.remove('hidden');
-                }
-            });
-
-            observer.observe(mainButton);
+        const observer = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) {
+            headerButton.classList.add("hidden");
+          } else {
+            headerButton.classList.remove("hidden");
+          }
         });
+
+        observer.observe(mainButton);
+      });
     </script>
-    <div class="content-background"> <!-- Novo contêiner -->
-        <div class="content-container">
-            <img src="./imagem/estudante-sem-fundo.jpg" alt="Estudante" class="study-image">
-            <div class="centered-text">
-                O jeito grátis, fácil e eficaz de<br> se alfabetizar!
-            </div>
-            <div class="button-container">
-                <button class="comece-agora" onclick="window.location.href='login.html'">Comece Agora</button>
-                <button class="login" onclick="window.location.href='login.html'">Já Tenho uma Conta</button>
-            </div>
-            <hr class="separator">
-            <div class="video-text-container">
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/SEU_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="text-container">
-                    <h2>AlfaEduca</h2>
-                    <p>Bem-vindo ao AlfaEduca, o aplicativo interativo de alfabetização! O AlfaEduca foi desenvolvido para auxiliar no processo de aprendizado de crianças e adultos na fase inicial de alfabetização, utilizando uma abordagem lúdica, prática e envolvente.</p>
-                    <h3>Sobre o AlfaEduca</h3>
-                    <p>O AlfaEduca é uma ferramenta educacional projetada para ensinar as primeiras letras, palavras e noções básicas de leitura e escrita. Por meio de jogos, atividades interativas e vídeos educativos, o aplicativo visa proporcionar uma experiência de aprendizagem dinâmica e divertida.</p>
-                    <h3>Objetivos do AlfaEduca:</h3>
-                    <ul>
-                        <li>Facilitar a alfabetização de forma intuitiva e atrativa.</li>
-                        <li>Incentivar o desenvolvimento das habilidades de leitura e escrita desde os primeiros passos.</li>
-                        <li>Oferecer uma abordagem personalizada para o aprendizado, respeitando o ritmo de cada usuário.</li>
-                        <li>Estimular a criatividade e o prazer pelo aprendizado.</li>
-                    </ul>
-                    <h3>Funcionalidades</h3>
-                    <p>Letras e Sons: Aprenda as letras do alfabeto e seus respectivos sons. Palavras e Imagens: Associe palavras a imagens para melhorar a memorização. Progressão Personalizada: O aplicativo adapta-se ao ritmo e progresso de cada usuário.</p>
-                    <p>Equipe AlfaEduca.</p>
-                </div>
-            </div>
+    <div class="content-background">
+      <!-- Novo contêiner -->
+      <div class="content-container">
+        <img
+          src="./imagem/estudante-sem-fundo.jpg"
+          alt="Estudante"
+          class="study-image"
+        />
+        <div class="centered-text">
+          O jeito grátis, fácil e eficaz de<br />
+          se alfabetizar!
         </div>
+        <div class="button-container">
+          <button
+            class="comece-agora"
+            onclick="window.location.href='login.html'"
+          >
+            Comece Agora
+          </button>
+          <button class="login" onclick="window.location.href='login.html'">
+            Já Tenho uma Conta
+          </button>
+        </div>
+        <hr class="separator" />
+        <h1 class="sobre-nos">Conheça nosso projeto:</h1>
+        <div class="video-text-container">
+          <div class="video-container">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/JmTuPpLEGKE?si=WnWhh-acFpOS3FwU"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="text-container">
+            <h2>AlfaEduca</h2>
+            <p>
+              Bem-vindo ao AlfaEduca, o aplicativo interativo de alfabetização!
+              O AlfaEduca foi desenvolvido para auxiliar no processo de
+              aprendizado de crianças e adultos na fase inicial de
+              alfabetização, utilizando uma abordagem lúdica, prática e
+              envolvente.
+            </p>
+            <h3>Sobre o AlfaEduca</h3>
+            <p>
+              O AlfaEduca é uma ferramenta educacional projetada para ensinar as
+              primeiras letras, palavras e noções básicas de leitura e escrita.
+              Por meio de jogos, atividades interativas e vídeos educativos, o
+              aplicativo visa proporcionar uma experiência de aprendizagem
+              dinâmica e divertida.
+            </p>
+            <h3>Objetivos do AlfaEduca:</h3>
+            <ul>
+              <li>Facilitar a alfabetização de forma intuitiva e atrativa.</li>
+              <li>
+                Incentivar o desenvolvimento das habilidades de leitura e
+                escrita desde os primeiros passos.
+              </li>
+              <li>
+                Oferecer uma abordagem personalizada para o aprendizado,
+                respeitando o ritmo de cada usuário.
+              </li>
+              <li>Estimular a criatividade e o prazer pelo aprendizado.</li>
+            </ul>
+            <h3>Funcionalidades</h3>
+            <p>
+              Letras e Sons: Aprenda as letras do alfabeto e seus respectivos
+              sons. Palavras e Imagens: Associe palavras a imagens para melhorar
+              a memorização. Progressão Personalizada: O aplicativo adapta-se ao
+              ritmo e progresso de cada usuário.
+            </p>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>Descrição do Projeto</h3>
+          <p>
+            O AlfaEduca é um aplicativo interativo de alfabetização desenvolvido para auxiliar no processo de aprendizado de crianças e adultos na fase inicial de alfabetização. Utilizando uma abordagem lúdica, prática e envolvente, o AlfaEduca visa proporcionar uma experiência de aprendizagem dinâmica e divertida.
+          </p>
+          <p>
+            <a href="https://github.com/erickjonatthan/alfa-educa-web" target="_blank">Repositório do Site</a>
+            |
+            <a href="https://github.com/erickjonatthan/alfa-educa-app" target="_blank">Repositório do App</a>
+            |
+            <a href="https://github.com/erickjonatthan/alfa-educa-server" target="_blank">Repositório do Servidor</a>
+        
+          </p>
+          <h3>Membros da Equipe</h3>
+          <ul>
+            <li><strong>Douglas Patriota</strong> - Desenvolvedor Mobile</li>
+            <li><strong>Erick Santos</strong> - Desenvolvedor Back End</li>
+            <li><strong>Vinícius Henrykyy</strong> - Desenvolvedor Web</li>
+            <!-- Adicione mais membros conforme necessário -->
+          </ul>
+        </div>
+      </div>
     </div>
-    <footer>
-        <p>&copy; 2025 AlfaEduca. All rights reserved.</p>
+    <footer class="footer">
+      <p>&copy; 2025 AlfaEduca. All rights reserved.</p>
     </footer>
-</body>
+  </body>
 </html>
