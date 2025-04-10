@@ -347,8 +347,6 @@ transition: background-color .5s;
     align-items: center;
     position: relative;
     background-color: #000;
-    margin-top: 10vh;
-
 }
 
 .alfaeduca-logo {
@@ -359,7 +357,7 @@ transition: background-color .5s;
     opacity: 0.9;
     background-color: white; /* Adiciona um fundo branco para destacar o logotipo */
     padding: 5px; /* Espaçamento interno para o fundo branco */
-    margin-bottom: 5px; /* Pequeno espaçamento entre o logotipo e o formulário */
+    margin-top: 5vh;
 }
 
 .alfaeduca-logo:hover {
