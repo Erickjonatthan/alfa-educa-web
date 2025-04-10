@@ -59,3 +59,4 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         loading.style.display = 'none'; // Esconder o loading
     }
 });
+
