@@ -15,7 +15,7 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
     loading.style.display = 'flex'; // Mostrar o loading
 
     try {
-        const response = await fetch('https://alfa-educa-server.onrender.com/cadastro', {
+        const response = await fetch('http://69.62.97.224:8081/cadastro', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
             senha: senha,
         };
 
-        const loginResponse = await fetch('https://alfa-educa-server.onrender.com/login', {
+        const loginResponse = await fetch('http://69.62.97.224:8081/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

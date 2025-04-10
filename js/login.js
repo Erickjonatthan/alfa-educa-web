@@ -13,7 +13,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     loading.style.display = 'flex'; // Mostrar o loading
 
     try {
-        const response = await fetch('https://alfa-educa-server.onrender.com/login', {
+        const response = await fetch('http://69.62.97.224:8081/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
