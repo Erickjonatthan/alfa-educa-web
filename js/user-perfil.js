@@ -23,7 +23,7 @@ async function fetchUserData() {
     }
 
     try {
-        const response = await fetch(`https://alfa-educa-server.onrender.com/cadastro/${accountId}`, {
+        const response = await fetch(`http://69.62.97.224:8081/cadastro/${accountId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -138,7 +138,7 @@ function toBase64(file) {
 // Função auxiliar para editar a conta do usuário
 async function editarConta(token, user) {
     try {
-        const response = await fetch(`https://alfa-educa-server.onrender.com/cadastro`, {
+        const response = await fetch(`http://69.62.97.224:8081/cadastro`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -181,7 +181,7 @@ document.getElementById('delete-account-button').addEventListener('click', async
 // Função auxiliar para deletar a conta do usuário
 async function deletarConta(id, token) {
     try {
-        const response = await fetch(`https://alfa-educa-server.onrender.com/cadastro/${id}`, {
+        const response = await fetch(`http://69.62.97.224:8081/cadastro/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`

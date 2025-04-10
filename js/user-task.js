@@ -35,7 +35,7 @@ async function fetchUserData() {
     }
 
     try {
-        const response = await fetch(`https://alfa-educa-server.onrender.com/cadastro/${accountId}`, {
+        const response = await fetch(`http://69.62.97.224:8081/cadastro/${accountId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -53,12 +53,17 @@ async function fetchUserData() {
         localStorage.setItem('userData', JSON.stringify(userData));
         const userPhotoElement = document.querySelector('.user-photo img');
         if (userPhotoElement) {
-           userPhotoElement.src = `data:image/jpeg;base64,${userData.imgPerfil}`;
-            // Esconder o loading
-            loading.style.display = 'none';
+            if (userData.imgPerfil) {
+                userPhotoElement.src = `data:image/jpeg;base64,${userData.imgPerfil}`;
+            } else {
+                userPhotoElement.src = './imagem/user-logo.jpg'; // Define a imagem padrão
+            }
         }
+        // Esconder o loading
+        loading.style.display = 'none';
     } catch (error) {
         console.error('Erro ao buscar dados do usuário:', error.message);
+        loading.style.display = 'none'; // Esconde o loading mesmo em caso de erro
     }
 }
 
@@ -71,7 +76,7 @@ document.querySelector('.logout').addEventListener('click', function() {
 
 async function listarResposta(token) {
     try {
-        const response = await fetch("https://alfa-educa-server.onrender.com/resposta/usuario/respostas", {
+        const response = await fetch("http://69.62.97.224:8081/resposta/usuario/respostas", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -97,7 +102,7 @@ async function listarResposta(token) {
 
 async function listarAtividades(token) {
     try {
-        const response = await fetch("https://alfa-educa-server.onrender.com/atividade", {
+        const response = await fetch("http://69.62.97.224:8081/atividade", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,

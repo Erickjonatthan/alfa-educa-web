@@ -28,7 +28,7 @@ async function criarResposta(token, resposta, atividadeId, usuarioId) {
     console.log("Usuário ID:", usuarioId);
 
     const response = await fetch(
-      "https://alfa-educa-server.onrender.com/resposta",
+      "http://69.62.97.224:8081/resposta",
       {
         method: "POST",
         headers: {
@@ -141,7 +141,7 @@ async function fetchAtividade() {
 
   try {
     const response = await fetch(
-      `https://alfa-educa-server.onrender.com/atividade/${atividadeId}`,
+      `http://69.62.97.224:8081/atividade/${atividadeId}`,
       {
         method: "GET",
         headers: {
