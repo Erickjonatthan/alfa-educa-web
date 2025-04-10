@@ -33,12 +33,13 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
+    background-color: rgb(0, 0, 0);
 }
-.conteiner{
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 60vh;
     background-color: rgb(0, 0, 0);
 }
 .conteudo{
@@ -140,6 +141,8 @@ transition: background-color .5s;
     flex-direction: column;
     width: 55%;
     text-align: center;
+    margin-top: 0; /* Remove qualquer margem superior */
+    padding-top: 0; /* Remove qualquer padding superior */
 }
 .form input{
     height: 45px;
@@ -337,5 +340,29 @@ transition: background-color .5s;
         width: 40%;
     }
 }
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #000;
+    margin-top: 10vh;
 
+}
 
+.alfaeduca-logo {
+    max-width: 150px; /* Ajuste o tamanho do logotipo */
+    height: auto;
+    border-radius: 20%; /* Arredonda as bordas da imagem */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.9;
+    background-color: white; /* Adiciona um fundo branco para destacar o logotipo */
+    padding: 5px; /* Espaçamento interno para o fundo branco */
+    margin-bottom: 5px; /* Pequeno espaçamento entre o logotipo e o formulário */
+}
+
+.alfaeduca-logo:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+    opacity: 1;
+}
