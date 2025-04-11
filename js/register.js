@@ -1,3 +1,5 @@
+import { API_URL } from "./const.js";
+
 document.getElementById('registrationForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
@@ -15,7 +17,7 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
     loading.style.display = 'flex'; // Mostrar o loading
 
     try {
-        const response = await fetch('http://69.62.97.224:8081/cadastro', {
+        const response = await fetch(`${API_URL}cadastro`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,15 +29,13 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
             throw new Error('Erro na requisição: ' + response.statusText);
         }
 
-        const result = await response.json();
-
         // Realizar login automaticamente
         const loginData = {
             login: email,
             senha: senha,
         };
 
-        const loginResponse = await fetch('http://69.62.97.224:8081/login', {
+        const loginResponse = await fetch(`${API_URL}login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

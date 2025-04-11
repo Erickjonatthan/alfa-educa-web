@@ -1,3 +1,5 @@
+import { API_URL } from "./const.js";
+
 function checkTokenAndRedirect() {
   const token = localStorage.getItem("token");
   const atividadeId = localStorage.getItem("atividadeId");
@@ -28,7 +30,7 @@ async function criarResposta(token, resposta, atividadeId, usuarioId) {
     console.log("Usuário ID:", usuarioId);
 
     const response = await fetch(
-      "http://69.62.97.224:8081/resposta",
+      `${API_URL}resposta`, // Corrigido aqui
       {
         method: "POST",
         headers: {
@@ -75,7 +77,7 @@ async function criarResposta(token, resposta, atividadeId, usuarioId) {
   }
 }
 
-async function enviarResposta() {
+function enviarResposta() {
   const resposta = document.querySelector(".resposta").value;
   if (!resposta.trim()) {
     alert("Por favor, escreva sua resposta antes de enviar.");
@@ -91,40 +93,47 @@ async function enviarResposta() {
   mostrarLoading();
 
   try {
-    const respostaCriada = await criarResposta(
-      token,
-      resposta,
-      atividadeId,
-      usuarioId
-    );
-    if (respostaCriada.finalizada) {
-      alert("Resposta correta!");
-      localStorage.removeItem("atividadeId"); // Remove o atividadeId ao concluir
-      //volta para a página de atividades
-      window.location.href = "atividade.html";
-    } else {
-      alert("Resposta incorreta. Tente novamente.");
-      tentativas++;
-      document.getElementById("tentativas").innerText = tentativas;
+    criarResposta(token, resposta, atividadeId, usuarioId)
+      .then((respostaCriada) => {
+        if (respostaCriada.finalizada) {
+          alert("Resposta correta!");
+          localStorage.removeItem("atividadeId"); // Remove o atividadeId ao concluir
+          window.location.href = "atividade.html"; // Volta para a página de atividades
+        } else {
+          alert("Resposta incorreta. Tente novamente.");
+          tentativas++;
+          document.getElementById("tentativas").innerText = tentativas;
 
-      if (tentativas >= 3) {
-        alert(
-          "Você está com dificuldades para Responder? volte para página de atividades e veja a resposta correta"
-        );
-        voltar();
-      }
-    }
+          if (tentativas >= 3) {
+            alert(
+              "Você está com dificuldades para responder? Volte para a página de atividades e veja a resposta correta."
+            );
+            voltar();
+          }
+        }
+      })
+      .catch((error) => {
+        alert(error.message);
+      })
+      .finally(() => {
+        esconderLoading();
+      });
   } catch (error) {
     alert(error.message);
-  } finally {
     esconderLoading();
   }
 }
+
+// Torna a função acessível globalmente
+window.enviarResposta = enviarResposta;
 
 function voltar() {
   localStorage.removeItem("atividadeId"); // Remove o atividadeId ao voltar
   window.history.back();
 }
+
+// Torna a função acessível globalmente
+window.voltar = voltar;
 
 async function fetchAtividade() {
   const atividadeId = localStorage.getItem("atividadeId");
@@ -141,7 +150,7 @@ async function fetchAtividade() {
 
   try {
     const response = await fetch(
-      `http://69.62.97.224:8081/atividade/${atividadeId}`,
+      `${API_URL}atividade/${atividadeId}`,
       {
         method: "GET",
         headers: {

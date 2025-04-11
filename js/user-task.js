@@ -1,3 +1,4 @@
+import { API_URL } from "./const.js";
 function checkTokenAndRedirect() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -12,6 +13,9 @@ function toggleUserMenu() {
     const userMenu = document.getElementById('user-menu');
     userMenu.classList.toggle('hidden');
 }
+
+// Torna a função acessível globalmente
+window.toggleUserMenu = toggleUserMenu;
 
 document.addEventListener('click', function(event) {
     const userMenu = document.getElementById('user-menu');
@@ -35,7 +39,7 @@ async function fetchUserData() {
     }
 
     try {
-        const response = await fetch(`http://69.62.97.224:8081/cadastro/${accountId}`, {
+        const response = await fetch(`${API_URL}cadastro/${accountId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -76,7 +80,7 @@ document.querySelector('.logout').addEventListener('click', function() {
 
 async function listarResposta(token) {
     try {
-        const response = await fetch("http://69.62.97.224:8081/resposta/usuario/respostas", {
+        const response = await fetch(`${API_URL}resposta/usuario/respostas`, { // Corrigido aqui
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -102,7 +106,7 @@ async function listarResposta(token) {
 
 async function listarAtividades(token) {
     try {
-        const response = await fetch("http://69.62.97.224:8081/atividade", {
+        const response = await fetch(`${API_URL}atividade`, { // Corrigido aqui
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,

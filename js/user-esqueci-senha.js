@@ -1,3 +1,4 @@
+import { API_URL } from "./const.js";
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('forgot-password-form');
     form.addEventListener('submit', async (event) => {
@@ -17,7 +18,7 @@ const handleForgotPassword = async (email) => {
     }
 
     try {
-        const response = await fetch('http://69.62.97.224:8081/login/recuperar-senha', {
+        const response = await fetch(`${API_URL}login/recuperar-senha`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
