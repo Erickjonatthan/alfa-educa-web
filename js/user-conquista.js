@@ -1,3 +1,4 @@
+import { API_URL } from "./const.js";
 function checkTokenAndRedirect() {
   const token = localStorage.getItem('token');
   if (!token) {
@@ -12,6 +13,8 @@ function toggleUserMenu() {
   const userMenu = document.getElementById('user-menu');
   userMenu.classList.toggle('hidden');
 }
+
+window.toggleUserMenu = toggleUserMenu;
 
 document.querySelector('.logout').addEventListener('click', function() {
   localStorage.clear();
@@ -33,7 +36,7 @@ async function fetchUserData() {
   }
 
   try {
-      const response = await fetch(`http://69.62.97.224:8081/cadastro/${accountId}`, {
+      const response = await fetch(`${API_URL}cadastro/${accountId}`, {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`,
@@ -68,7 +71,7 @@ fetchUserData();
 async function listarConquistaUsuario(token, userId) {
   try {
     const response = await fetch(
-      `http://69.62.97.224:8081/conquista/listar/${userId}`,
+      `${API_URL}conquista/listar/${userId}`,
       {
         method: "GET",
         headers: {
@@ -96,6 +99,26 @@ async function listarConquistaUsuario(token, userId) {
   }
 }
 
+async function desbloquearConquistas(token, userId) {
+  try {
+    const response = await fetch(`${API_URL}conquista/desbloquear/${userId}`, { // Corrigido o endpoint
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      console.error('Erro ao desbloquear conquistas:', response.statusText);
+    } else {
+      console.log('Conquistas desbloqueadas com sucesso!');
+    }
+  } catch (error) {
+    console.error('Erro ao desbloquear conquistas:', error);
+  }
+}
+
 async function renderizarConquistas() {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("contaId");
@@ -105,20 +128,42 @@ async function renderizarConquistas() {
   }
 
   try {
+    // Desbloquear conquistas do usuário ao acessar a tela
+    await desbloquearConquistas(token, userId);
+
     const conquistas = await listarConquistaUsuario(token, userId);
+    console.log("Conquistas do usuário:", conquistas);
+
     const conquistaContainer = document.querySelector(".conquista-container");
     conquistaContainer.innerHTML = "";
 
     conquistas.forEach((conquista) => {
+      console.log("Conquista:", conquista);
+
       const conquistaElement = document.createElement("div");
       conquistaElement.className = "conquista-item";
+
+      // Adicionando imagem padrão caso `imgConquista` seja null
+      const imgSrc = conquista.imgConquista
+        ? `data:image/jpeg;base64,${conquista.imgConquista}`
+        : "./imagem/trofeu-padrao.png";
+
       conquistaElement.innerHTML = `
-                <img src="data:image/jpeg;base64,${conquista.imgConquista}" alt="Troféu" class="conquista-imagem">
-                <div class="conquista-texto">
-                <h1>${conquista.titulo}</h1>
-                    <p>${conquista.descricao}</p>
-                </div>
-            `;
+        <div class="conquista-card">
+          <img src="${imgSrc}" alt="Troféu" class="conquista-imagem">
+          <div class="conquista-detalhes">
+            <h2>${conquista.titulo}</h2>
+            <p>${conquista.descricao}</p>
+            <ul>
+              ${conquista.nivelRequerido ? `<li>Nível Requerido: ${conquista.nivelRequerido}</li>` : ""}
+              ${conquista.pontosRequeridos ? `<li>Pontos Requeridos: ${conquista.pontosRequeridos}</li>` : ""}
+              ${conquista.atividadesRequeridas ? `<li>Atividades Requeridas: ${conquista.atividadesRequeridas}</li>` : ""}
+              ${conquista.primeiraRespostaCorreta ? `<li>Primeira Resposta Correta: ${conquista.primeiraRespostaCorreta}</li>` : ""}
+              ${conquista.diasConsecutivosRequeridos ? `<li>Dias Consecutivos Requeridos: ${conquista.diasConsecutivosRequeridos}</li>` : ""}
+            </ul>
+          </div>
+        </div>
+      `;
       conquistaContainer.appendChild(conquistaElement);
     });
   } catch (error) {
