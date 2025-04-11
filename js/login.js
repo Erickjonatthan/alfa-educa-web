@@ -1,4 +1,39 @@
 import { API_URL } from "./const.js";
+
+// Tentar login automático ao carregar a página
+async function tentarLoginComToken() {
+    const token = localStorage.getItem("token");
+    const contaId = localStorage.getItem("contaId");
+
+    if (!token || !contaId) {
+        console.log("Nenhum token ou contaId encontrado no localStorage.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_URL}cadastro/${contaId}`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (response.ok) {
+            console.log("Login automático bem-sucedido!");
+            window.location.href = "pagina-inicial.html";
+        } else {
+            console.log("Token inválido ou expirado. Continuando para a página de login.");
+            localStorage.removeItem("token");
+            localStorage.removeItem("contaId");
+        }
+    } catch (error) {
+        console.error("Erro ao tentar login com token:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", tentarLoginComToken);
+
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
