@@ -20,6 +20,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd alfa-educa-web
-            git pull origin master
+            git fetch origin master
+            git reset --hard origin/master
             docker-compose down
             docker-compose up -d --build
