@@ -1,1 +1,1 @@
-export const API_URL = "https://alfaeduca.ejms-api.shop/";
+export const API_URL = "http://localhost:8081/";
