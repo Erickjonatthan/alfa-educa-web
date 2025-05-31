@@ -97,17 +97,26 @@ git clone [URL_DO_REPOSITORIO]
 cd alfa-educa-web
 ```
 
-2. **Build e execução com Docker Compose:**
+2. **Configure as variáveis de ambiente:**
+```bash
+copy .env.example .env
+```
+Edite o arquivo `.env` com as configurações da sua API:
+```env
+API_URL=http://localhost:8081/
+```
+
+3. **Build e execução com Docker Compose:**
 ```bash
 docker-compose up --build
 ```
 
-3. **Executar em background:**
+4. **Executar em background:**
 ```bash
 docker-compose up -d --build
 ```
 
-4. **Acessar a aplicação:**
+5. **Acessar a aplicação:**
 ```
 http://localhost:8082
 ```
@@ -135,6 +144,10 @@ alfa-educa-web/
 ├── docker-compose.yml      # Orquestração dos containers
 ├── Dockerfile             # Definição da imagem Docker
 ├── nginx.conf             # Configuração do servidor NGINX
+├── .env.example           # Modelo de variáveis de ambiente
+├── .env                   # Variáveis de ambiente (não versionado)
+├── .gitignore             # Arquivos ignorados pelo Git
+├── ENV_README.md          # Documentação das variáveis de ambiente
 ├── public/                # Arquivos da aplicação web
 │   ├── index.html         # Página principal
 │   ├── login.html         # Sistema de login
@@ -144,6 +157,10 @@ alfa-educa-web/
 │   ├── usuario.html       # Perfil do usuário
 │   ├── css/              # Estilos CSS
 │   ├── js/               # Scripts JavaScript
+│   │   ├── const.js      # Constantes da aplicação
+│   │   ├── config.js     # Configurações do ambiente
+│   │   ├── env-loader.js # Carregador de variáveis de ambiente
+│   │   └── ...           # Outros scripts
 │   └── imagem/           # Assets e imagens
 ```
 
@@ -167,13 +184,47 @@ O vídeo demonstra:
 - **Sistema de Conquistas/Gamificação**
 - **Gerenciamento de Perfil**
 - **Interface Responsiva**
+- **Sistema de Configuração de Ambiente**
+- **Integração com API Backend**
+
+## ⚙️ Sistema de Configuração
+
+### Variáveis de Ambiente
+
+O projeto utiliza um sistema inteligente de variáveis de ambiente que:
+
+- **Detecta automaticamente** o ambiente (desenvolvimento/produção)
+- **Carrega configurações** específicas para cada ambiente
+- **Mantém segurança** não versionando informações sensíveis
+- **Facilita deployment** em diferentes ambientes
+
+#### Arquivos de Configuração:
+
+- **`.env.example`**: Modelo com todas as variáveis necessárias
+- **`.env`**: Configurações reais do ambiente local (não versionado)
+- **`public/js/env-loader.js`**: Carregador inteligente de ambiente
+- **`public/js/config.js`**: Configuração centralizada da aplicação
+- **`public/js/const.js`**: Constantes exportadas para toda a aplicação
+
+#### Configuração Automática por Ambiente:
+
+```javascript
+// Desenvolvimento (localhost)
+API_URL: 'http://localhost:8081/'
+
+// Produção (domínio real)
+API_URL: 'https://sua-api-producao.com/'
+```
+
+Para mais detalhes, consulte o arquivo `ENV_README.md`.
 
 ## 🌐 Tecnologias Utilizadas
 
-- **Frontend**: HTML5, CSS3, JavaScript
+- **Frontend**: HTML5, CSS3, JavaScript (ES6 Modules)
 - **Servidor Web**: NGINX
 - **Containerização**: Docker & Docker Compose
 - **Base**: Alpine Linux
+- **Configuração**: Sistema de variáveis de ambiente
 
 ## 📊 Métricas do Container
 
@@ -206,6 +257,24 @@ docker system prune -a
 docker-compose build --no-cache
 ```
 
+4. **API não conecta:**
+```bash
+# Verificar configuração no .env
+echo API_URL no arquivo .env
+
+# Testar conexão
+curl http://localhost:8081/
+```
+
+5. **Variáveis de ambiente não carregam:**
+```javascript
+// Verificar no console do navegador
+console.log('API_URL:', API_URL);
+
+// Recarregar configuração
+window.location.reload();
+```
+
 ## 🚀 Deploy em Produção
 
 ### Variáveis de Ambiente
@@ -216,6 +285,23 @@ services:
     environment:
       - NGINX_HOST=seu-dominio.com
       - NGINX_PORT=80
+```
+
+### Configuração da API
+
+Para produção, o sistema detecta automaticamente o ambiente e utiliza:
+```javascript
+// Configuração automática baseada no hostname
+const isProduction = window.location.hostname !== 'localhost';
+```
+
+Edite o arquivo `public/js/env-loader.js` para configurar a URL da API de produção:
+```javascript
+if (isProduction) {
+    return {
+        API_URL: 'https://sua-api-producao.com/'
+    };
+}
 ```
 
 ### SSL/HTTPS
@@ -262,10 +348,15 @@ Este projeto está sob a licença [MIT/Apache/etc.].
 
 ### Comando Único para Execução:
 ```bash
+# 1. Configurar ambiente
+copy .env.example .env
+
+# 2. Executar aplicação
 docker-compose up --build
 ```
 
-**Acesso:** http://localhost:8082
+**Acesso:** http://localhost:8082  
+**API Backend:** Configure no arquivo `.env`
 
 ---
 
