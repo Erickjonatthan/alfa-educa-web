@@ -32,7 +32,7 @@ class EnvLoader {
         } else {
             // Configurações de desenvolvimento
             return {
-                API_URL: 'http://localhost:8081/'
+                API_URL: 'http://host.docker.internal:8081/'
             };
         }
     }
