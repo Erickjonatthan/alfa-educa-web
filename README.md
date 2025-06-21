@@ -42,6 +42,34 @@ CMD ["nginx", "-g", "daemon off;"]
 - **EXPOSE 80**: Expõe a porta 80 do container
 - **CMD**: Inicia o NGINX em modo foreground
 
+#### 1.1 Dockerfile.selenium
+```dockerfile
+FROM python:3.11-slim
+
+# Instala dependências do sistema
+RUN apt-get update && \
+    apt-get install -y wget unzip curl gnupg2 && \
+    apt-get install -y chromium-driver chromium && \
+    rm -rf /var/lib/apt/lists/*
+
+# Instala dependências Python
+COPY requirements.txt /app/requirements.txt
+WORKDIR /app
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia o script de teste
+COPY test_selenium.py /app/test_selenium.py
+
+# Executa o teste
+CMD ["python", "test_selenium.py"]
+```
+
+**Explicação dos Componentes:**
+- **Base Image**: `python:3.11-slim` - Imagem Python otimizada
+- **Sistema**: Instalação do Chrome e ChromeDriver para Selenium
+- **Dependências**: Instalação das bibliotecas Python necessárias
+- **Script**: Copia e executa o script de teste automatizado
+
 #### 2. Docker Compose (docker-compose.yml)
 ```yaml
 services:
@@ -53,13 +81,31 @@ services:
     ports:
       - "8082:80"
     restart: always
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.selenium
+    network_mode: "host"
+    depends_on:
+      - site
+    entrypoint: ["python", "test_selenium.py"]
+    labels:
+      - alfa-educa-teste=true
 ```
 
 **Configurações Detalhadas:**
-- **container_name**: Nome específico para fácil identificação
-- **build context**: Diretório atual como contexto de build
-- **ports**: Mapeamento da porta 8082 (host) para 80 (container)
-- **restart**: Política de reinicialização automática
+- **Serviço site**:
+  - **container_name**: Nome específico para fácil identificação
+  - **build context**: Diretório atual como contexto de build
+  - **ports**: Mapeamento da porta 8082 (host) para 80 (container)
+  - **restart**: Política de reinicialização automática
+
+- **Serviço test**:
+  - **Dockerfile.selenium**: Imagem específica para testes
+  - **network_mode**: "host" para acessar o site localmente
+  - **depends_on**: Garante que o site esteja rodando antes dos testes
+  - **entrypoint**: Executa o script de teste Python
+  - **labels**: Identifica containers de teste para limpeza
 
 #### 3. Configuração NGINX (nginx.conf)
 ```nginx
@@ -106,35 +152,64 @@ Edite o arquivo `.env` com as configurações da sua API:
 API_URL=http://localhost:8081/
 ```
 
-3. **Build e execução com Docker Compose:**
+3. **Build e execução do projeto:**
+
+No Windows:
 ```bash
-docker-compose up --build
+build_and_test.cmd
 ```
 
-4. **Executar em background:**
+No Linux/Mac:
 ```bash
-docker-compose up -d --build
+chmod +x build_and_test.sh
+./build_and_test.sh
 ```
 
-5. **Acessar a aplicação:**
+Este script irá:
+- Buildar os containers
+- Subir o serviço do site
+- Executar os testes Selenium
+- Manter o frontend rodando se os testes passarem
+- Limpar containers de teste
+
+4. **Acessar a aplicação:**
 ```
 http://localhost:8082
+```
+
+### Scripts de Build e Teste
+
+O projeto possui dois scripts para build e teste automatizado:
+
+#### Windows (`build_and_test.cmd`)
+```bat
+# Executa build, testes e mantém o site rodando
+build_and_test.cmd
+```
+
+#### Linux/Mac (`build_and_test.sh`)
+```bash
+# Dar permissão de execução
+chmod +x build_and_test.sh
+
+# Executa build, testes e mantém o site rodando
+./build_and_test.sh
 ```
 
 ### Comandos Úteis
 
 ```bash
-# Parar os containers
-docker-compose down
-
-# Rebuild sem cache
-docker-compose build --no-cache
+# Parar os containers e remover tudo
+docker-compose down -v --rmi all --remove-orphans
 
 # Ver logs
 docker-compose logs -f
 
 # Acessar o container
 docker exec -it alfa-educa-web sh
+
+# Listar containers de teste parados
+docker ps -a -f "status=exited" -f "label=alfa-educa-teste=true"
 ```
 
 ## 📂 Estrutura do Projeto
@@ -142,8 +217,13 @@ docker exec -it alfa-educa-web sh
 ```
 alfa-educa-web/
 ├── docker-compose.yml      # Orquestração dos containers
-├── Dockerfile             # Definição da imagem Docker
+├── Dockerfile             # Definição da imagem Docker do site
+├── Dockerfile.selenium    # Definição da imagem Docker para testes
 ├── nginx.conf             # Configuração do servidor NGINX
+├── build_and_test.cmd    # Script de build e teste para Windows
+├── build_and_test.sh     # Script de build e teste para Linux/Mac
+├── test_selenium.py      # Testes automatizados com Selenium
+├── requirements.txt      # Dependências Python para os testes
 ├── .env.example           # Modelo de variáveis de ambiente
 ├── .env                   # Variáveis de ambiente (não versionado)
 ├── .gitignore             # Arquivos ignorados pelo Git
@@ -339,20 +419,25 @@ Este projeto está sob a licença [MIT/Apache/etc.].
 
 ## 📋 Checklist para Professor
 
-- ✅ **Zero Configuração**: Container roda com um único comando
+- ✅ **Zero Configuração**: Scripts automatizados para build e teste
 - ✅ **Documentação Completa**: Todas as configurações explicadas
 - ✅ **Vídeo Demonstrativo**: Instalação do zero no YouTube
 - ✅ **Estrutura Limpa**: Arquivos organizados e comentados
-- ✅ **Compatibilidade**: Funciona em Windows, Linux e macOS
+- ✅ **Compatibilidade**: Scripts específicos para Windows e Linux/Mac
 - ✅ **Troubleshooting**: Soluções para problemas comuns
+- ✅ **Testes Automatizados**: Selenium integrado ao processo de build
 
-### Comando Único para Execução:
+### Execução do Projeto:
 ```bash
 # 1. Configurar ambiente
-copy .env.example .env
+copy .env.example .env  # Windows
+# ou
+cp .env.example .env    # Linux/Mac
 
-# 2. Executar aplicação
-docker-compose up --build
+# 2. Executar build e testes
+build_and_test.cmd     # Windows
+# ou
+./build_and_test.sh    # Linux/Mac
 ```
 
 **Acesso:** http://localhost:8082  
@@ -364,3 +449,29 @@ docker-compose up --build
 **Universidade**: UFRPE - UABJ 
 **Disciplina**: Projeto Interdisciplinar 4
 **Semestre**: 2025.1
+
+## 🧪 Testes Automatizados
+
+O projeto utiliza Selenium para testes automatizados de interface, garantindo que todas as funcionalidades principais estejam funcionando corretamente.
+
+### Componentes de Teste
+
+- **test_selenium.py**: Script Python com os casos de teste
+- **requirements.txt**: Dependências Python necessárias
+- **Dockerfile.selenium**: Container específico para execução dos testes
+- **Scripts de Build**: Integração dos testes no processo de build
+
+### Execução dos Testes
+
+Os testes são executados automaticamente durante o build:
+- Verificam se o site está acessível
+- Testam funcionalidades principais
+- Validam a interface do usuário
+- Garantem integração com o backend
+
+### Dependências de Teste
+
+```txt
+selenium
+# Outras dependências em requirements.txt
+```
