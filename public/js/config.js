@@ -1,10 +1,10 @@
-import EnvLoader from './env-loader.js';
+import ApiUrlLoader from './api-loader.js';
 
 // Configuração do ambiente
 // Este arquivo carrega as configurações baseadas no ambiente
 class Config {
     constructor() {
-        const envConfig = EnvLoader.getConfig();
+        const envConfig = ApiUrlLoader.getConfig();
         this.API_URL = envConfig.API_URL;
     }
 }
