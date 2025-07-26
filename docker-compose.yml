@@ -1,4 +1,3 @@
-
 services:
   site:
     container_name: alfa-educa-web
@@ -8,3 +7,13 @@ services:
     ports:
       - "8082:80"
     restart: always
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.selenium
+    network_mode: "host"
+    depends_on:
+      - site
+    entrypoint: ["python", "test_selenium.py"]
+    labels:
+      - alfa-educa-teste=true

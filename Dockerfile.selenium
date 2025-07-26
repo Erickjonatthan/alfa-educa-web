@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+# Instala dependências do sistema
+RUN apt-get update && \
+    apt-get install -y wget unzip curl gnupg2 && \
+    apt-get install -y chromium-driver chromium && \
+    rm -rf /var/lib/apt/lists/*
+
+# Instala dependências Python
+COPY requirements.txt /app/requirements.txt
+WORKDIR /app
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia o script de teste
+COPY test_selenium.py /app/test_selenium.py
+
+# Executa o teste
+CMD ["python", "test_selenium.py"]
