@@ -61,6 +61,22 @@ html {
     box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
 }
 
+.btn-github {
+    background: linear-gradient(135deg, #333 0%, #24292e 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(36, 41, 46, 0.3);
+}
+
+.btn-github:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(36, 41, 46, 0.4);
+    background: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
+}
+
+.btn-github i {
+    margin-right: 8px;
+}
+
 /* Cabeçalho e Navegação */
 .header {
     position: fixed;
@@ -542,6 +558,36 @@ html {
     font-weight: 500;
 }
 
+/* Seção da Equipe */
+.team-section {
+    background: #f8fafc;
+}
+
+.team-card .portfolio-tags span {
+    background: #e8f4f8;
+    color: #2c3e50;
+}
+
+.team-card .portfolio-content h3 {
+    color: #6B1E7B;
+    font-weight: 600;
+}
+
+.team-card .team-role {
+    color: #F39C12;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Ajuste específico para a imagem do Vinicius */
+.team-card .vinicius-image {
+    object-position: center 20% !important;
+    transform: scale(1.1);
+}
+
 /* Seção de Contato */
 .contact {
     padding: 80px 0;
@@ -670,6 +716,16 @@ html {
 
 .footer-section ul li a:hover {
     color: #6B1E7B;
+}
+
+/* Estilo específico para link do GitHub */
+.footer-section ul li a i.fab.fa-github {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.footer-section ul li a:hover i.fab.fa-github {
+    color: #F39C12;
 }
 
 .social-links {
