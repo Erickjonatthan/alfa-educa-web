@@ -1,138 +1,363 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AlfaEduca</title>
-    <link rel="icon" href="imagem/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/style-inicio.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap"
-      rel="stylesheet"
-    />
-
-  </head>
-  <body>
-    <header>
-      <h1>AlfaEduca</h1>
-      <button class="start-button" onclick="window.location.href='login.html'">
-        Comece Agora
-      </button>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlfaEduca - Alfabetização para Adultos</title>
+    <meta name="description" content="Plataforma inovadora de alfabetização para adultos. Aprenda a ler e escrever no seu próprio ritmo, com metodologia especialmente desenvolvida para você.">
+    <link rel="stylesheet" href="css/style-inicio.css">
+    <link rel="icon" href="imagem/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>AlfaEduca</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#team" class="nav-link">Equipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#method" class="nav-link">Método</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#testimonials" class="nav-link">Depoimentos</a>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-primary">Começe Agora</a>
+                </div>
+                <div class="nav-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
     </header>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const headerButton = document.querySelector(".start-button");
-        const mainButton = document.querySelector(
-          ".button-container .comece-agora"
-        );
 
-        const observer = new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting) {
-            headerButton.classList.add("hidden");
-          } else {
-            headerButton.classList.remove("hidden");
-          }
-        });
+    <!-- Seção Principal -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Nunca é Tarde para <span class="highlight">Aprender</span></h1>
+                <p class="hero-description">
+                    O AlfaEduca é uma plataforma especialmente desenvolvida para adultos que desejam aprender a ler e escrever. 
+                    Nossa metodologia respeita seu ritmo e experiência de vida, tornando o aprendizado natural e eficaz.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">Saiba Mais</a>
+                    <a href="https://github.com/Erickjonatthan/alfa-educa-web" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+                        <i class="fab fa-github"></i> Repositório
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-graphic">
+                    <img src="imagem/menina-meditando.png" alt="Menina meditando - Aprendizado tranquilo e focado" class="hero-meditation-image">
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        observer.observe(mainButton);
-      });
-    </script>
-    <div class="content-background">
-      <!-- Novo contêiner -->
-      <div class="content-container">
-        <img
-          src="./imagem/estudante-sem-fundo.jpg"
-          alt="Estudante"
-          class="study-image"
-        />
-        <div class="centered-text">
-          O jeito grátis, fácil e eficaz de<br />
-          se alfabetizar!
+    <!-- Seção Sobre -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sobre o AlfaEduca</h2>
+                <p>Uma nova oportunidade de transformar sua vida através da leitura e escrita</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Nossa Missão</h3>
+                    <p>
+                        O AlfaEduca foi criado com o propósito de democratizar a alfabetização para adultos, 
+                        respeitando a rica experiência de vida de cada pessoa. Acreditamos que nunca é tarde 
+                        para aprender e que cada adulto merece ter acesso à educação de qualidade.
+                    </p>
+                    <p>
+                        Nossa plataforma utiliza uma metodologia especialmente desenvolvida para adultos, 
+                        considerando suas necessidades específicas, rotina de trabalho e experiências pessoais. 
+                        Cada lição é construída para ser prática e aplicável ao dia a dia.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h4>Respeito e Acolhimento</h4>
+                                <p>Ambiente seguro e livre de julgamentos para seu aprendizado</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>No Seu Ritmo</h4>
+                                <p>Aprenda quando e onde quiser, respeitando sua rotina</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>Método Comprovado</h4>
+                                <p>Metodologia testada e aprovada por educadores especialistas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="imagem/AlfaEduca-logo.jpg" alt="Logo oficial do AlfaEduca - Aplicativo de alfabetização para adultos" class="about-main-image">
+                </div>
+            </div>
         </div>
-        <div class="button-container">
-          <button
-            class="comece-agora"
-            onclick="window.location.href='login.html'"
-          >
-            Comece Agora
-          </button>
-          <button class="login" onclick="window.location.href='login.html'">
-            Já Tenho uma Conta
-          </button>
+    </section>
+
+    <!-- Seção Nossa Equipe -->
+    <section id="team" class="portfolio team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossa Equipe</h2>
+                <p>Conheça os estudantes dedicados que tornaram o AlfaEduca possível</p>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Desenvolvedor Front-End Mobile -->
+                <div class="portfolio-item team-card">
+                    <div class="portfolio-image">
+                        <img src="imagem/Guilherme.jpg" alt="Guilherme Douglas - Desenvolvedor Mobile" class="testimonial-image">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Douglas Guilherme</h3>
+                        <p class="team-role">Desenvolvedor Front-End Mobile</p>
+                        <p>Desenvolvedor Front-End. Atuou no desenvolvimento do aplicativo mobile da plataforma AlfaEduca, contribuindo com a interface.</p>
+                        <div class="portfolio-tags">
+                            <span>Typescript</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desenvolvedor Back-End -->
+                <div class="portfolio-item team-card">
+                    <div class="portfolio-image">
+                        <img src="imagem/Erick.jpg" alt="Erick Jonathan - Desenvolvedor Back-End" class="testimonial-image">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Erick Jonathan</h3>
+                        <p class="team-role">Desenvolvedor Back-End</p>
+                        <p>Desenvolvedor Back-end. Responsável pela arquitetura do sistema e pela integração de dados da AlfaEduca e configurou nossa IA.</p>
+                        <div class="portfolio-tags">
+                            <span>Docker</span>
+                            <span>Java</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desenvolvedor Full-Stack -->
+                <div class="portfolio-item team-card">
+                    <div class="portfolio-image">
+                        <img src="imagem/Gladistony.jpg" alt="Gladistony Lins - Desenvolvedor Full-Stack" class="testimonial-image">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Gladistony Silva</h3>
+                        <p class="team-role">Desenvolvedor Full-Stack</p>
+                        <p>Desenvolvedor Full-Stack. Atuou no back-end, garantindo integração, estabilidade da plataforma AlfaEduca, e apoiou na manutenção de dados.</p>
+                        <div class="portfolio-tags">
+                            <span>Java</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desenvolvedor Front-End Web -->
+                <div class="portfolio-item team-card">
+                    <div class="portfolio-image">
+                        <img src="imagem/Vinicius.jpg" alt="Vinicius Henrykyy - Desenvolvedor Front-End Web" class="testimonial-image vinicius-image">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Vinicius Henrykyy</h3>
+                        <p class="team-role">Desenvolvedor Front-End Web</p>
+                        <p>Responsável pela criação do site e interface web da plataforma AlfaEduca.</p>
+                        <div class="portfolio-tags">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <hr class="separator" />
-        <h1 class="sobre-nos">Conheça nosso projeto:</h1>
-        <div class="video-text-container">
-          <div class="video-container">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/JmTuPpLEGKE?si=WnWhh-acFpOS3FwU"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="text-container">
-            <h2>AlfaEduca</h2>
-            <p>
-              Bem-vindo ao AlfaEduca, o aplicativo interativo de alfabetização!
-              O AlfaEduca foi desenvolvido para auxiliar no processo de
-              aprendizado de crianças e adultos na fase inicial de
-              alfabetização, utilizando uma abordagem lúdica, prática e
-              envolvente.
-            </p>
-            <h3>Sobre o AlfaEduca</h3>
-            <p>
-              O AlfaEduca é uma ferramenta educacional projetada para ensinar as
-              primeiras letras, palavras e noções básicas de leitura e escrita.
-              Por meio de jogos, atividades interativas e vídeos educativos, o
-              aplicativo visa proporcionar uma experiência de aprendizagem
-              dinâmica e divertida.
-            </p>
-            <h3>Objetivos do AlfaEduca:</h3>
-            <ul>
-              <li>Facilitar a alfabetização de forma intuitiva e atrativa.</li>
-              <li>
-                Incentivar o desenvolvimento das habilidades de leitura e
-                escrita desde os primeiros passos.
-              </li>
-              <li>
-                Oferecer uma abordagem personalizada para o aprendizado,
-                respeitando o ritmo de cada usuário.
-              </li>
-              <li>Estimular a criatividade e o prazer pelo aprendizado.</li>
-            </ul>
-            <h3>Funcionalidades</h3>
-            <p>
-              Letras e Sons: Aprenda as letras do alfabeto e seus respectivos
-              sons. Palavras e Imagens: Associe palavras a imagens para melhorar
-              a memorização. Progressão Personalizada: O aplicativo adapta-se ao
-              ritmo e progresso de cada usuário.
-            </p>
-            <h3>Nossa Equipe:</h3>
-            <ul>
-                <li><strong>Douglas Patriota</strong> - Desenvolvedor Mobile</li>
-                <li><strong>Erick Santos</strong> - Desenvolvedor Back End</li>
-                <li><strong>Vinícius Henrykyy</strong> - Desenvolvedor Web</li>
-                <!-- Adicione mais membros conforme necessário -->
-            </ul>
-            <p>
-              <a href="https://github.com/erickjonatthan/alfa-educa-web" target="_blank">Repositório do Site</a>
-              |
-              <a href="https://github.com/erickjonatthan/alfa-educa-app" target="_blank">Repositório do App</a>
-              |
-              <a href="https://github.com/erickjonatthan/alfa-educa-server" target="_blank">Repositório do Servidor</a>
-          
-            </p>
-          </div>
+    </section>
+
+    <!-- Seção Método -->
+    <section id="method" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nosso Método</h2>
+                <p>Uma abordagem especial pensada exclusivamente para adultos</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Atividades com Níveis</h3>
+                    <p>Sistema progressivo de aprendizado que se adapta ao seu ritmo, com atividades organizadas por níveis de dificuldade.</p>
+                    <ul>
+                        <li>Nível Básico - Primeiras letras</li>
+                        <li>Nível Intermediário - Palavras</li>
+                        <li>Nível Avançado - Frases e textos</li>
+                        <li>Avaliação contínua do progresso</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Escrita com Câmera (Mobile)</h3>
+                    <p>Tecnologia exclusiva para dispositivos móveis que utiliza a câmera para treinar a escrita à mão em tempo real.</p>
+                    <ul>
+                        <li>Disponível apenas no celular/tablet</li>
+                        <li>Detecção de movimento da escrita</li>
+                        <li>Feedback instantâneo</li>
+                        <li>Prática de caligrafia guiada</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progresso Personalizado</h3>
+                    <p>Acompanhamento individual do seu desenvolvimento com feedbacks constantes e motivação.</p>
+                    <ul>
+                        <li>Relatórios de progresso</li>
+                        <li>Metas alcançáveis</li>
+                        <li>Certificados de conquista</li>
+                        <li>Suporte pedagógico</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Aprendizado Móvel</h3>
+                    <p>Plataforma otimizada para dispositivos móveis, permitindo estudar em qualquer lugar e momento.</p>
+                    <ul>
+                        <li>Interface amigável</li>
+                        <li>Acesso offline limitado</li>
+                        <li>Sincronização automática</li>
+                        <li>Notificações de estudo</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
+
+    <!-- Seção Depoimentos -->
+    <section id="testimonials" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Histórias de Sucesso</h2>
+                <p>Veja como o AlfaEduca transformou a vida de nossos alunos</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="imagem/maria.jpg" alt="Maria Silva - Aluna do AlfaEduca" class="testimonial-image">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Maria Silva, 52 anos</h3>
+                        <p>"Sempre tive vergonha de não saber ler. Com o AlfaEduca, aprendi no meu ritmo e hoje posso ler para meus netos. É uma sensação maravilhosa!"</p>
+                        <div class="portfolio-tags">
+                            <span>Alfabetizada</span>
+                            <span>São Paulo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="imagem/João.jpg" alt="João Santos - Aluno do AlfaEduca" class="testimonial-image">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>João Santos, 45 anos</h3>
+                        <p>"Trabalho na construção civil e sempre precisei de ajuda para ler. Agora consigo ler as placas, receitas e até WhatsApp. Mudou minha vida!"</p>
+                        <div class="portfolio-tags">
+                            <span>Lendo fluente</span>
+                            <span>Paraíba</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="imagem/Ana.avif" alt="Ana Costa - Aluna do AlfaEduca" class="testimonial-image">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Ana Costa, 38 anos</h3>
+                        <p>"Como mãe solteira, não tinha tempo para estudar. O AlfaEduca me permitiu aprender em casa, após o trabalho. Hoje ajudo meus filhos com a lição!"</p>
+                        <div class="portfolio-tags">
+                            <span>Escrevendo</span>
+                            <span>Minas Gerais</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
     <footer class="footer">
-      <p>&copy; 2025 AlfaEduca. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AlfaEduca</h3>
+                    <p>Transformando vidas através da alfabetização de adultos. Porque nunca é tarde para aprender.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Aprendizado</h4>
+                    <ul>
+                        <li><a href="#method">Nosso Método</a></li>
+                        <li><a href="#testimonials">Depoimentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#team">Nossa Equipe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Desenvolvimento</h4>
+                    <ul>
+                        <li><a href="https://github.com/Erickjonatthan/alfa-educa-web" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Repositório GitHub
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone"></i> (00) 0 0000-0000</p>
+                    <p><i class="fas fa-envelope"></i> contato@alfaeduca.com.br</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AlfaEduca. Todos os direitos reservados. Educação que transforma vidas.</p>
+            </div>
+        </div>
     </footer>
-  </body>
+
+    <script src="js/landingpage.js"></script>
+</body>
 </html>

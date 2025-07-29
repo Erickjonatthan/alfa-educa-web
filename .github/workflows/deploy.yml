@@ -22,5 +22,5 @@ jobs:
             cd alfa-educa-web
             git fetch origin master
             git reset --hard origin/master
-            docker-compose down
-            docker-compose up -d --build
+            chmod +x build_and_test.sh
+            ./build_and_test.sh
