@@ -17,7 +17,7 @@ chrome_options.add_argument('--remote-debugging-port=9222')
 chrome_options.binary_location = '/usr/bin/chromium'
 
 # Usa a URL do serviço site no docker-compose
-FRONTEND_URL = 'https://site.alfaeduca.ejms-api.shop/'
+FRONTEND_URL = 'http://localhost:8082'
 
 # Dados de teste
 NOME = "Teste Selenium"
