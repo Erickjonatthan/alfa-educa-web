@@ -6,8 +6,20 @@ const chatbotForm = document.getElementById('chatbot-form');
 const chatbotInput = document.getElementById('chatbot-input');
 const chatbotMessages = document.getElementById('chatbot-messages');
 
+// Mensagem padrão inicial
+function showDefaultMessage() {
+    if (chatbotMessages && chatbotMessages.innerHTML.trim() === '') {
+        chatbotMessages.innerHTML = `<div style='margin-bottom:6px; color:#c98300;'><b>Fadu:</b> Surgiu alguma dúvida? Vamos conversar!</div>`;
+    }
+}
+
+showDefaultMessage();
+
 chatbotToggle.addEventListener('click', function() {
     chatbotBox.style.display = chatbotBox.style.display === 'none' ? 'block' : 'none';
+    if (chatbotBox.style.display === 'block') {
+        showDefaultMessage();
+    }
 });
 
 chatbotForm.addEventListener('submit', async function(event) {
