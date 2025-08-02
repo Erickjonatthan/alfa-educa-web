@@ -1,10 +1,14 @@
 import os
+from dotenv import load_dotenv
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+# Carrega variáveis de ambiente do arquivo .env
+load_dotenv()
 
 # Configurações do Selenium para rodar sem interface gráfica (headless)
 chrome_options = Options()
@@ -16,8 +20,10 @@ chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--remote-debugging-port=9222')
 chrome_options.binary_location = '/usr/bin/chromium'
 
-# Usa a URL do serviço site no docker-compose
-FRONTEND_URL = 'https://site.alfaeduca.ejms-api.shop'
+# Usa a URL do serviço site que está habilitado no CORS do backend
+FRONTEND_URL = os.getenv('FRONTEND_URL')
+if not FRONTEND_URL or FRONTEND_URL.strip() == '':
+    raise ValueError('FRONTEND_URL não definida ou vazia. Verifique o arquivo .env!')
 
 # Dados de teste
 NOME = "Teste Selenium"
